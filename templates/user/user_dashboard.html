@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AstroIQ Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body style="background-color: white;"> 
+    <div class="dashboard-container d-flex">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="profile_username">
+                <p class="username" style="font-size: 20px; color: white;"><b>{{ user.username }}</b></p>
+            </div>
+            <div class="points-league">
+                <span>🔥 {{ this_user.points }} Points</span>
+                <span>🏅 {{ this_user.league }}</span>
+            </div>
+            <br> 
+            <ul class="nav flex-column">
+                <li><a href="{{ url_for('profile', username=user.username) }}"> 👤 Profile</a></li>
+                <li><a href="{{ url_for('leaderboard', username=user.username) }}"> 🏆 Leaderboard</a></li>
+                <li><a href="#available_subjects"> Available Subjects </a></li>
+                <li><a href="#available_quizzes"> Available Quizzes </a></li>
+                <li><a href="{{ url_for('user_quizzes', username=user.username) }}"> 🤔 Quizzes</a></li>
+                <li><a href="{{ url_for('bonus_quiz_list', username=this_user.username) }}"> 🎁 Bonus Quiz</a></li>
+                <li><a href="/user_summary/{{ this_user.id }}"> 🔍 Summary</a></li>
+                <li><a href="/login"> 🚪 Logout </a></li>
+            </ul>
+        </nav>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <h1 style="font-size: 58px; font-weight:bold; text-transform:uppercase; text-align:center; color: darkblue">Welcome Back, <strong>{{ user.username }}</strong> </h1>
+            <div class="profile">
+                <div class = "profile_image">
+                    {% if user.image %}
+                        <img src="{{ url_for('static', filename='images/user/' + user.image) }}" class="user_image">
+                    {% else %}
+                        <img src="/static/images/user/user1.jpg" class="user_image">
+                    {% endif %} 
+                </div>
+            </div>
+
+            <br> <br> <br> <br><br> <br> <br> <br><br> <br> <br> <br><br> <br> <br> <br><br> <br> <br> <br><br> <br> <br> <br><br> <br> <br> <br><br> <br> <br> <br><br> <br> <br> <br>
+
+
+            <!-- Subjects Section -->
+            <div class="subject-container mt-4" id="available_subjects">
+                <h2 class="text-center">Available Subjects</h2>
+                <div class="row g-4">
+                    {% for subject in all_subjects %}
+                        <div class="col-md-6 col-lg-4">
+                            <div class="subject-card p-3" 
+                            style="background-color: lightyellow;">
+                                <h5>{{ subject.name }}</h5> <br> <br>
+                                <div class = "av_image">
+                                <img src="/static/images/quiz/{{subject.name}}.jpg">
+                                </div>
+                                <br> <br>
+                                <a href="/user_view_subject/{{ this_user.username }}/{{ subject.id }}" class="btn">View Subject</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <br> <br> <br> <br><br> <br> <br> <br><br> <br> <br> <br><br> <br> <br> <br><br> <br> <br> <br><br> <br> <br> <br><br> <br> <br> <br><br> <br> <br> <br>
+
+            <!-- Quizzes Section -->
+            <div class="quiz-container mt-4" id="available_quizzes">
+                <h2 class="text-center">Available Quizzes</h2>
+                <div class="row g-4">
+                    {% for subject in all_subjects %}
+                        {% for chapter in subject.chapters %}
+                            {% for quiz in chapter.quizzes %}
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="quiz-card p-3" style="background-color: lightyellow;">
+                                        <h5>{{ subject.name }} - {{ chapter.name }}</h5>
+                                        <br><br><br>
+                                        <p>Quiz Date: {{ quiz.date_of_quiz }}</p><br><br>
+                                        <a href="/start_quiz/{{ quiz.id }}/{{ this_user.username }}" class="btn">Start Quiz</a>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+.sidebar {
+    width: 380px;
+    background: #820202;
+    height: 100vh;
+    padding-top: 20px;
+    box-shadow: 2px 0 10px rgba(240, 176, 120, 0.1);
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+    text-align: center;
+    align-items: center;
+}
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+.sidebar ul li a {
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+    font-size: 22px;
+}
+.sidebar ul li a:hover {
+    background:white;
+    color: rgb(59, 3, 112);
+    font-weight: bolder;
+    font-size: 30px;
+}
+
+.stats-card{
+    background: white;
+    border-radius: 30px;
+    box-shadow: 0px 4px 6px rgb(59, 3, 112);
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 20px;
+    transition: 0.3s;
+    height: 500px;
+}
+.subject-card{
+    background: white;
+    border-radius: 30px;
+    box-shadow: 0px 4px 6px rgb(59, 3, 112);
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 20px;
+    transition: 0.3s;
+    height: 500px;
+    background-color: rgb(222, 243, 191);
+}
+.subject-card h5{
+    background-color: white;
+    border-radius: 15px;
+    font-size: 40px;
+    text-transform: uppercase;
+}
+.quiz-card {
+    background: white;
+    border-radius: 30px;
+    box-shadow: 0px 4px 6px rgb(59, 3, 112);
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 20px;
+    transition: 0.3s;
+    height: 500px;
+    background-color: rgb(218, 250, 250);
+}
+.quiz-card h5{
+    background-color: white;
+    border-radius: 15px;
+    font-size: 40px;
+    text-transform: uppercase;
+}
+.quiz-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 10px rgb(160, 5, 5);
+}
+.subject-card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 10px rgb(153, 5, 158);
+}
+.subject-card h5, .quiz-card h5 {
+    font-weight: bold;
+}
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    .main-content {
+        margin-left: 0;
+    }
+}
+
+.navbar{
+    background-color: #820202;
+    padding: 0px;
+}
+.navbar img{
+    margin-right: 30px;
+}
+
+
+
+/* Main Content */
+.main-content {
+    margin-left: 400px;
+    padding: 20px;
+    width: 90%;
+    background-color: white;
+}
+
+.profile {
+    text-align: center;
+    color: black;
+}
+.user_image {
+    margin-top: 20px;
+    border-radius: 25px;
+    height:700px;
+    width: 600px;
+}
+.points-league{
+    background-color: white;
+    font-size: 25px;
+    font-weight: bolder;
+    color: black;
+}
+.av_image {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.av_image img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    object-position: center;
+    transition: 0.3s;
+    border-radius: 20px;
+}
+
+.av_image:hover img {
+    transform: scale(1.1);
+}
+.btn{
+    background-color: darkblue;
+    border-radius: 15px;
+    color: white;
+    font-size: 25px;
+}
+.btn:hover{
+    background-color: white;
+    color: darkblue;
+    font-size: 32px;
+}
+h2{
+    background-color: rgb(59, 3, 112);
+    font-weight: bold;
+    border-radius: 15px;
+    gap: 20px;
+    color: white;
+}
+</style>

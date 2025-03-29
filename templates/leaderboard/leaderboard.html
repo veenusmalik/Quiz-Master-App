@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            color: white;
+            background-image: url(/static/images/user/leaderboard.jpg);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: right;
+        }
+        .main-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            margin-top: 100px;
+            margin-bottom: 100px;
+        }
+        .leaderboard-container {
+            background: linear-gradient(135deg, #c7f7f3, #a4e7b3);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 900px;
+            text-align: center;
+            margin-right: 600px;
+        }
+        h1 {
+            font-family: 'Luckiest Guy';
+            font-size: 80px;
+            color: darkblue;
+            text-shadow: 2px 2px 10px rgba(255, 204, 0, 0.8);
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        thead {
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+        th, td {
+            padding: 15px;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+        tbody tr:nth-child(odd) {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        tbody tr:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transition: 0.3s;
+        }
+        .back-btn {
+            display: block;
+            width: 300px;
+            margin: 30px auto;
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            color: white;
+            font-weight: bold;
+            border: none;
+            padding: 12px;
+            border-radius: 30px;
+            transition: 0.3s;
+            text-align: center;
+            text-decoration: none;
+            font-size: 25px;
+            box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
+        }
+        .back-btn:hover {
+            transform: scale(1.1);
+        }
+        .rank-icon {
+            font-size: 1.8rem;
+        }
+        .gold { color: gold; }
+        .silver { color: silver; }
+        .bronze { color: #cd7f32; }
+        .navbar {
+            background-color: darkblue;
+            padding: 15px;
+        }
+
+        .navbar-brand {
+            font-size: 25px;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .navbar-nav  {
+            color: white;
+            font-size: 20px;
+            margin-right: 15px;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+        .navbar a {
+            color: white;
+            margin-right: 15px;
+            text-decoration: none;
+            font-size: 21px;
+        }
+        .navbar-nav a:hover {
+            color: white;
+            transform: scale(1.1);
+            font-size: 28px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">AstroIQ</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="/user_dashboard/{{ this_user.username }}">Go to Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="main-container">
+        <div class="leaderboard-container">
+            <h1>LEADERBOARD</h1>
+            <img src="/static/images/user/leaderboard2.jpg" height="200px" width="200px">
+            {% for league, users in leagues.items() %}
+                {% if users %}
+                    <h2 class="text-center mt-4">{{ league }}</h2>
+                    
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Username</th>
+                                <th>Total Points</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for user in users %}
+                            <tr>
+                                <td>
+                                    {% if loop.index == 1 %}<span class="rank-icon gold">🥇</span>
+                                    {% elif loop.index == 2 %}<span class="rank-icon silver">🥈</span>
+                                    {% elif loop.index == 3 %}<span class="rank-icon bronze">🥉</span>
+                                    {% else %}{{ loop.index }}{% endif %}
+                                </td>
+                                <td>{{ user.username }}</td>
+                                <td>{{ user.points }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% endif %}
+            {% endfor %}
+            <a href="/user_dashboard/{{ this_user.username }}" class="back-btn">⬅ Go Back </a>
+        </div>
+    </div>
+</body>
+</html>

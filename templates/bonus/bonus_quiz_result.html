@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bonus Quiz Result</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+    <style>
+        .container{
+            margin-left: 500px;
+        }
+        body{
+            background-image: url(/static/images/user/bonus_quiz_result.jpg);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: 50px;
+        }
+        .navbar {
+            background-color: darkblue;
+            padding: 15px;
+        }
+
+        .navbar-brand {
+            font-size: 25px;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .navbar-nav  {
+            color: white;
+            font-size: 20px;
+            margin-right: 15px;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+        .navbar a {
+            color: white;
+            margin-right: 15px;
+            text-decoration: none;
+            font-size: 21px;
+        }
+        .navbar-nav a:hover {
+            color: white;
+            transform: scale(1.1);
+            font-size: 28px;
+        }
+    /* Glassmorphism Card */
+    .score-card {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        width: 300px;
+    }
+
+    .popup-message {
+        display: none;
+        background: rgba(255, 255, 255, 0.95);
+        transition: all 0.5s ease-in-out;
+        padding: 1.2rem;
+        border-left: 5px solid #17a2b8;
+        animation: fadeIn 1s ease-in-out;
+        width: 400px;
+        margin-left: 450px;
+    }
+
+    /* Buttons */
+    .back-btn {
+        background: linear-gradient(to right, #28a745, #20c997);
+        color: white;
+        border: none;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .back-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Score Colors */
+    .celebrate { color: #28a745; animation: glow 1s infinite alternate; }
+    .good { color: #ffc107; }
+    .work-hard { color: #dc3545; }
+
+    /* Glow Animation */
+    @keyframes glow {
+        from { text-shadow: 0 0 10px #28a745; }
+        to { text-shadow: 0 0 20px #28a745; }
+    }
+
+    /* Fade-in Animation */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .view-answers-btn {
+        background: linear-gradient(to right, #007bff, #0056b3);
+        color: white;
+        font-size: 20px;
+        padding: 12px 25px;
+        border-radius: 8px;
+        font-weight: bold;
+        text-decoration: none;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .view-answers-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">AstroIQ</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a href="/user_dashboard/{{ this_user.username }}">Go to Dashboard</a></li>
+                    <li class="nav-item"><a href="/logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<div class="container text-center mt-5">
+    <h1 class="display-5 fw-bold text-primary">🎯 Bonus Quiz Results 🎯</h1>
+
+    <!-- Score Card -->
+    <div class="card mt-4 mx-auto text-center shadow-lg border-0 rounded-4 score-card">
+        <div class="card-body">
+            <h5 class="card-title fs-4 text-secondary">Your Score</h5>
+            <h2 id="score" class="score-text fw-bold text-dark">{{ score.total_scored }}%</h2>
+        </div>
+    </div>
+
+    <!-- Popup Message -->
+    <div id="popupMessage" class="popup-message mt-4 p-3 rounded-3 shadow-lg">
+        <h2 id="message" class="fw-bold"></h2>
+        <p id="animation" class="fs-5"></p>
+    </div>
+    <br><br><br>
+</div>
+
+
+<!-- JavaScript -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let score = Number("{{ score.total_scored }}");
+        let message = document.getElementById("message");
+        let animation = document.getElementById("animation");
+        let popup = document.getElementById("popupMessage");
+
+        if (score > 90) {
+            message.innerText = "🎉 Amazing! 🎉";
+            animation.innerText = "You're a star!";
+            popup.classList.add("celebrate");
+            startConfetti();
+        } else if (score >= 50) {
+            message.innerText = "👍 Good Job!";
+            animation.innerText = "Keep Improving!";
+            popup.classList.add("good");
+        } else {
+            message.innerText = "😞 Keep Practicing!";
+            animation.innerText = "You can do better!";
+            popup.classList.add("work-hard");
+        }
+
+        popup.style.display = "block";  
+    });
+
+    function startConfetti() {
+        let canvas = document.getElementById("confettiCanvas");
+        let ctx = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        let confettiParticles = [];
+        for (let i = 0; i < 120; i++) {
+            confettiParticles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                r: Math.random() * 6 + 3,
+                d: Math.random() * 10 + 2,
+                color: `hsl(${Math.random() * 360}, 100%, 50%)`,
+                tilt: Math.random() * 10,
+            });
+        }
+
+        function drawConfetti() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            confettiParticles.forEach((p) => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2, false);
+                ctx.fillStyle = p.color;
+                ctx.fill();
+            });
+            confettiParticles.forEach((p) => {
+                p.y += p.d;
+                p.x += Math.sin(p.y / 50) * 2;
+                if (p.y > canvas.height) p.y = 0;
+            });
+            requestAnimationFrame(drawConfetti);
+        }
+        drawConfetti();
+    }
+</script>
+</body>
+</html>

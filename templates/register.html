@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: white;
+}
+
+/* Left Section (Image) */
+.left-section {
+    background-color: #673ab7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-image {
+    width: 750px;
+    height: 1200px;
+    object-fit: cover;
+}
+
+/* Right Section (Form) */
+.register-form {
+    width: 100%;
+    max-width: 1000px;
+    background: beige;
+    padding: 0px;
+    border-radius: 20px;
+    gap:10px;
+    margin-left: 50px;
+}
+
+h2 {
+    color: #673ab7;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Form Fields */
+.form-label {
+    font-weight: 500;
+}
+
+.form-control {
+    border-radius: 8px;
+}
+
+.btn-primary {
+    background-color: #673ab7;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+.btn-primary:hover {
+    background-color: #512da8;
+}
+
+a {
+    color: #673ab7;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+.exam-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.exam-options .form-check {
+    flex: 1 1 calc(33.333% - 15px);
+}
+
+#otherExamInput {
+    width: 100%;
+    max-width: 300px;
+}
+
+
+
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row vh-100">
+            <!-- Left Side: Image -->
+            <div class="col-md-5 left-section">
+                <img src="{{ url_for('static', filename='images/register.jpg') }}" class="register-image" alt="Registration Image">
+            </div>
+
+            <!-- Right Side: Registration Form -->
+            <div class="col-md-6 d-flex align-items-center justify-content-center">
+                <div class="register-form p-4 shadow-lg rounded">
+                    <h2 class="text-center">Registration</h2>
+                    <form action="/register" method="post" enctype="multipart/form-data">
+                        <div class = "mb-3">
+                            <label for = "Input1" class = "form-label" style="font-size: 20px;"> Full Name </label>
+                            <input type = "text" class = "form-control" id = "Input1" placeholder = "Enter full name" name = "fullname" required />
+                        </div>
+                        <div class = "mb-3">
+                            <label for = "Input2" class = "form-label" style="font-size: 20px;"> Username </label>
+                            <input type = "text" class = "form-control" id = "Input2" placeholder = "Enter username" name = "username" required />
+                        </div>
+                        <div class = "mb-3">
+                            <label for = "Input3" class = "form-label" style="font-size: 20px;"> Email </label>
+                            <input type = "email" class = "form-control" id = "Input3" placeholder = "Enter email" name = "email" required />
+                        </div>
+                        <div class = "mb-3">
+                            <label for = "Input4" class = "form-label" style="font-size: 20px;"> Password </label>
+                            <input type = "password" class = "form-control" id = "Input4" name = "password" placeholder="Enter password" required />
+                        </div>
+                        <div class = "conf-password">
+                            <label for = "Input5" class = "form-label"  style="font-size: 20px;"> Confirm Password </label> 
+                            <input type = "password" name = "confirmpassword" class = "form-control" id = "Input5" placeholder = "Re-enter your password" required />
+                        </div>
+                        <div class = "mb-3">
+                            <label class = "form-label"  style="font-size: 20px;"> Qualification </label>
+                            <select class = "form-select" aria-label = "Default select example" name = "qualification">
+                                <option selected> How much are you qualified ? </option>
+                                <option value = "1"> Class 1 </option>
+                                <option value = "2"> Class 2 </option>
+                                <option value = "3"> Class 3 </option>
+                                <option value = "4"> Class 4 </option>
+                                <option value = "5"> Class 5 </option>
+                                <option value = "6"> Class 6 </option>
+                                <option value = "7"> Class 7 </option>
+                                <option value = "8"> Class 8 </option>
+                                <option value = "9"> Class 9 </option>
+                                <option value = "10"> Class 10 </option>
+                                <option value = "11"> Class 11 </option>
+                                <option value = "12"> Class 12 </option>
+                                <option value = "13"> Bachelor's degree </option>
+                                <option value = "14"> Master's degree </option>
+                                <option value = "15"> Phd </option>
+                              </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label"  style="font-size: 20px;">What are you preparing for?</label>
+                            <div class="exam-options">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="exams" value="SSC CHSL">
+                                    <label class="form-check-label">SSC CHSL</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="exams" value="SSC CGL">
+                                    <label class="form-check-label">SSC CGL</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="exams" value="GATE">
+                                    <label class="form-check-label">GATE</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="exams" value="IELTS">
+                                    <label class="form-check-label">IELTS</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="exams" value="TOEFL">
+                                    <label class="form-check-label">TOEFL</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="exams" value="JEE">
+                                    <label class="form-check-label">JEE</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="exams" value="NEET">
+                                    <label class="form-check-label">NEET</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="otherExamCheckbox">
+                            <label class="form-check-label">Other</label>
+                        </div>
+                        <input type="text" class="form-control mt-2 d-none" id="otherExamInput" name="other_exam" placeholder="Enter other exam">
+                        
+                        <div class = "mb-3">
+                            <h5> <label for = "Input6" class = "form-label"  style="font-size: 20px;"> Date of birth </label> </h5>
+                            <input type = "date" class = "form-control" id = "Input6" name = "dateofbirth" required />
+                        </div>
+                        <div class = "mb-3">
+                            <h5> <label for = "imageUpload"  style="font-size: 20px;"> Upload your Image : </label> </h5>
+                            <input type = "file" class = "form-control" id = "imageUpload" name = "image" accept = "image/*" required />
+                        </div>
+   
+                        <button type="submit" class="btn btn-primary w-100"  style="font-size: 20px;">Register</button>
+                        <p class="text-center mt-3">Already have an account? <a href="/login">Log in</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const otherExamCheckbox = document.getElementById("otherExamCheckbox");
+    const otherExamInput = document.getElementById("otherExamInput");
+
+    otherExamCheckbox.addEventListener("change", function () {
+        if (this.checked) {
+            otherExamInput.classList.remove("d-none");
+            otherExamInput.setAttribute("required", "true");
+        } else {
+            otherExamInput.classList.add("d-none");
+            otherExamInput.removeAttribute("required");
+        }
+    });
+});
+</script>
+
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Summary</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        .navbar {
+            background-color: darkblue;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            font-size: 25px;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .navbar-nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        .navbar-nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 21px;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            margin-right: 30px;
+        }
+
+        .navbar-nav a:hover {
+            transform: scale(1.1);
+            font-size: 24px;
+        }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 300px;
+            background-color: rgb(198, 7, 109);
+            padding-top: 80px;
+            transition: all 0.3s;
+        }
+        .sidebar a {
+            display: block;
+            color: white;
+            padding: 12px;
+            text-decoration: none;
+            transition: background 0.3s, padding-left 0.3s;
+            font-size: 20px;
+            text-transform: uppercase;
+        }
+        .sidebar a:hover {
+            background-color: beige;
+            padding-left: 20px;
+            font-size: 24px;
+            color: black;
+        }
+
+        .content {
+            margin-left: 310px;
+            padding: 20px;
+            margin-top: 80px;
+        }
+
+        body {
+            background-color: white;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .card1{
+            background-color: rgb(193, 247, 195);
+            color: black;
+            padding: 20px;
+            border-radius: 60px;
+            font-weight: bold;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .card1:hover{
+            background-color: rgb(4, 119, 31);
+            color: white;
+            transition: ease-out 0.3s;
+            box-shadow: 5px 5px 5px rgb(250, 250, 216);
+            font-weight: bold;
+        }
+        .card2{
+            background-color: rgb(194, 247, 239);
+            color: black;
+            padding: 20px;
+            border-radius: 60px;
+            font-weight: bold;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .card2:hover{
+            background-color: rgb(4, 174, 157);
+            color: white;
+            transition: ease-out 0.3s;
+            font-weight: bold;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .card3{
+            background-color: rgb(231, 190, 253);
+            color: black;
+            padding: 20px;
+            border-radius: 60px;
+            font-weight: bold;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .card3:hover{
+            background-color: rgb(76, 5, 134);
+            color: white;
+            transition: ease-out 0.3s;
+            font-weight: bold;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .card4{
+            background-color: rgb(249, 200, 182);
+            color: black;
+            padding: 20px;
+            border-radius: 60px;
+            font-weight: bold;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .card4:hover{
+            background-color: rgb(222, 33, 16);
+            color: white;
+            transition: ease-out 0.3s;
+            font-weight: bold;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .card5{
+            background-color: rgb(223, 248, 174);
+            color: black;
+            padding: 20px;
+            border-radius: 60px;
+            font-weight: bold;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .card5:hover{
+            background-color: rgb(97, 143, 6);
+            color: white;
+            transition: ease-out 0.3s;
+            font-weight: bold;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .card6{
+            background-color: rgb(246, 202, 154);
+            color: black;
+            padding: 20px;
+            border-radius: 60px;
+            font-weight: bold;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .card6:hover{
+            background-color: rgb(215, 121, 32);
+            color: white;
+            transition: ease-out 0.3s;
+            font-weight: bold;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .edit-btn {
+            background-color: #ffa200;
+            border: none;
+            font-weight: bold;
+            font-size: 25px;
+            padding: 15px 30px;
+            margin-top: 20px;
+            border-radius: 30px;
+            color: white;
+            text-decoration: none;
+        }
+        .edit-btn:hover {
+            background-color: #f60808;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar fixed-top">
+        <a class="navbar-brand" href="/">AstroIQ</a>
+        <div class="navbar-nav">
+            <a href="/user_dashboard/{{ user.username }}">Go to Dashboard</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </nav>     
+    <div class="sidebar">
+        <a href="#summary">Summary</a><br>
+        <a class="past_scores" id="past_scores" href="/past_scores/{{ user.username }}">Score History</a><br>
+        <a href="#user_performance">Performance Analysis</a><br>
+        </select>
+    </div>
+    <div class="content">
+        <h2 class="dashboard-heading" id="summary" style="font-size: 105px; text-align:center; font-family:LuckiestGuy; font-weight:bolder; color: darkblue">Summary</h2>
+        
+        <div class="row mb-3">
+            <div class="col-12">
+                <div class="card2">
+                    <h4 style="font-size: 30px; font-weight:bold">Total Quizzes Attempted: <strong>{{ summary.total_attempted }}</strong></h4>
+                </div>
+            </div>
+        </div><br>
+        
+        <div class="row mb-3">
+            <div class="col-12">
+                <div class="card3">
+                    <h4 style="font-size: 30px; font-weight:bold">Average Score: <strong>{{ summary.avg_score }}%</strong></h4>
+                </div>
+            </div>
+        </div><br>
+        
+        <div class="row mb-3">
+            <div class="col-12">
+                <div class="card4">
+                    <h4 style="font-size: 30px; font-weight:bold">Best Performing Quiz: <strong>{{ summary.best_quiz }}</strong></h4>
+                </div>
+            </div>
+        </div><br>
+        
+        <div class="row mb-3">
+            <div class="col-12">
+                <div class="card5">
+                    <h4 style="font-size: 30px; font-weight:bold">Worst Performing Quiz: <strong>{{ summary.worst_quiz }}</strong></h4>
+                </div>
+            </div>
+        </div><br>
+
+        <div class="row mb-3">
+            <div class="col-12">
+                <div class="card6">
+                    <h4 style="font-size: 30px; font-weight:bold">Total Points: <strong>{{ user.points }}</strong></h4>
+                </div>
+            </div>
+        </div>
+        
+
+        <br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br>
+
+        <div class="user_performance" id="user_performance" style="font-size: 105px; text-align:center; font-family:LuckiestGuy; font-weight:bolder; color: darkblue;">
+            {% if img_filename %}
+            <h3>Performance Analysis</h3>
+            <img src="{{ url_for('static', filename=img_filename) }}" alt="User Quiz Scores" width="600px">
+            {% endif %}
+            <br><br>
+        </div>
+
+        <center><a href="/user_dashboard/{{ user.username }}" class="edit-btn">Go Back</a></center>
+    </div>
+</body>
+</html>

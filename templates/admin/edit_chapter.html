@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Chapter</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        body {
+            background-color: white; /* Light Yellow Background */
+            min-height: 100vh;
+            background-image: url(/static/images/admin/edit_chapter.jpg);
+            background-repeat: no-repeat;
+            background-size: 550px;
+            background-position: left;
+            background-attachment: fixed;
+        }
+        .custom-card {
+            background: #FFF9C4;
+            border-radius: 70px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 60%;
+            margin-bottom: 200px;
+            height: 600px;
+            margin-left: 600px;
+            padding: 50px;
+            margin-top: 180px;
+        }
+        .card-header {
+            background-color: rgb(2, 2, 73);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 45px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .form-label {
+            font-weight: bold;
+            color: black;
+            font-size: 23px;
+        }
+        .btn-primary {
+            background-color: #c0f4e7;
+            border: none;
+            font-size: 25px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            color: black;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        .btn-primary:hover {
+            background-color: #07eeb8;
+            color: white;
+            font-size: 30px;
+        }
+        .btn-secondary {
+            background-color: #f30ac4;
+            border: none;
+            font-size: 25px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            color: white;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        .btn-secondary:hover {
+            background-color: #f5c5ee;
+            color: black;
+            font-size: 30px;
+        }
+        .navbar {
+            background-color: darkblue;
+            padding: 15px;
+        }
+
+        .navbar-brand {
+            font-size: 25px;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .navbar-nav  {
+            color: white;
+            font-size: 20px;
+            margin-right: 15px;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+        .navbar a {
+            color: white;
+            margin-right: 15px;
+            text-decoration: none;
+            font-size: 21px;
+        }
+        .navbar-nav a:hover {
+            color: white;
+            transform: scale(1.1);
+            font-size: 28px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">AstroIQ</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="/admin">Go to Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="custom-card">
+        <div class="card-header">
+            Edit Chapter
+        </div>
+        <div class="card-body">
+            <form action="/edit_chapter/{{ chapter.id }}" method="POST">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Chapter Name</label>
+                    <input type="text" class="form-control" id="name" name="name" value="{{ chapter.name }}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Chapter Description</label>
+                    <textarea class="form-control" id="description" name="description" rows="3" required>{{ chapter.description }}</textarea>
+                </div>
+                <div class="text-center">
+                    <button type="/view_subjects" class="btn btn-primary">Update Chapter</button>
+                    <a href="/view_subjects" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

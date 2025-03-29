@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Subject Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url(/static/images/admin/view_subject_bg1.jpg);
+            background-position: left 80px;
+            background-repeat: no-repeat;
+            background-size: 500px;
+            background-attachment: fixed;
+            background-color: rgb(252, 166, 166);
+        }
+        .card {
+            border-radius: 40px;
+            padding: 30px;
+            background-color: rgb(235, 249, 227);
+            backdrop-filter: blur(10px); /* Frosted glass effect */
+            transition: 0.3s;
+            margin-left: 60px;
+            width: 1200px;
+        }
+        .card:hover {
+            transform: translateY(-15px);
+            box-shadow: 10px 5px 15px black;
+            border-radius: 40px;
+            padding: 30px;
+            background-color: #ffe1fc;
+            backdrop-filter: blur(10px); /* Frosted glass effect */
+            transition: 0.3s;
+            width: 100%;
+            margin-left: 60px;
+            max-width: 1200px;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        h5 {
+            font-size: 30px;
+            font-weight: bold;
+            color: #343a40;
+            text-transform: uppercase;
+            background-color: white;
+            border-radius: 50px;
+            padding: 20px;
+            font-size: 25px;
+        }
+        h2{
+            background-color: darkblue;
+            color: white;
+            font-size: 45px;
+            text-transform: uppercase;
+            border-radius: 30px;
+            padding: 20px;
+        }
+
+        .table {
+            margin-top: 20px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .table thead {
+            background: #710270;
+            color: white;
+        }
+
+        .btn {
+            border-radius: 8px;
+            font-size: 14px;
+            padding: 10px 15px;
+            transition: 0.3s;
+        }
+
+        .btn-warning {
+            background: #8eefcb;
+            border: none;
+            font-size: 22px;
+            color: white;
+            text-transform: uppercase;
+            border-color: white;
+            border-style: solid;
+            border-radius: 10px;
+            border-width: 4px;
+        }
+
+        .btn-warning:hover {
+            background: white;
+            font-size: 25px;
+            border-color: #8eefcb;
+            border-width: 4px;
+            border-style: solid;
+        }
+
+        .btn-danger {
+            border-style: solid;
+            border-color: white;
+            text-transform: uppercase;
+            border-width: 4px;
+            border-radius: 10px;
+            font-size: 22px;
+            margin-left: 5px;
+        }
+
+        .btn-danger:hover {
+            border-color: rgb(239, 11, 11);
+            font-size: 25px;
+            color: black;
+            background-color: white;
+            border-width: 4px;
+            border-style: solid;
+            border-radius: 10px;
+        }
+
+        .btn-primary {
+            background: #08d819;
+            border: none;
+            font-size: 22px;
+            color: white; 
+            margin-left: 50px;
+            border-radius: 10px;
+            border-color: white;
+            border-width: 4px;
+            border-style: solid;
+            text-transform: uppercase;
+        }
+
+        .btn-primary:hover {
+            background-color: white;
+            font-size: 25px;
+            color: black;
+            border-color: #08d819;
+            border-width: 4px;
+            border-style: solid;
+        }
+
+        .add-subject-btn {
+            background: yellow;
+            padding: 12px 20px;
+            font-size: 20px;
+            font-weight: bold;
+            display: inline-block;
+            text-align: center;
+            border-radius: 10px;
+            transition: 0.3s;
+            text-decoration: none;
+            color: black;
+            font-size: 24px;
+            border-color: white;
+            border-radius: 20px;
+            border-style: solid;
+            text-transform: uppercase;
+        }
+
+        .add-subject-btn:hover {
+            color: black;
+            font-size: 30px;
+            background-color: white;
+            border-color: yellow;
+        }
+        .edit-btn {
+            background: #cb3c10;
+            color:white;
+            border-radius: 15px;
+            padding: 8px 20px;
+            text-decoration: none;
+            font-size: 32px;
+            margin-left: 20px;
+            font-weight: bold
+        }
+        .edit-btn:hover{
+            border-color: #cb3c10;
+            background-color: white;
+            font-size: 36px;
+            border-width: 4px;
+            border-style: solid;
+            color:black;
+        }
+        .subject_link{
+            color: black;
+            font-size: 37px;
+            border-radius: 80px;
+            padding:20px;
+            background-color: white;
+            width: 90px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bolder;
+            border-color: white;
+            border-width: 4px;
+            border-style: solid;
+        }
+        .subject_link:hover{
+            background-color: rgb(242, 95, 10);
+            color:white;
+            font-size: 40px;
+        }
+        .btn-info{
+            font-size: 22px;
+            background-color: darkblue;
+            color: white;
+            border-radius: 25px;
+        }
+        .btn-info:hover{
+            font-size: 28px;
+            background-color: white;
+            border-color: darkblue;
+            border-width: 4px;
+            border-style: solid;
+            color:darkblue;
+        }
+        .container {
+            background: rgba(6, 40, 2, 0.2); /* Semi-transparent */
+            backdrop-filter: blur(10px); /* Blurred background */
+            -webkit-backdrop-filter: blur(10px); /* For Safari */
+            border-radius: 15px; /* Rounded corners */
+            border: 1px solid rgba(255, 255, 255, 0.3); /* Light border */
+            box-shadow: 0 4px 6px rgba(248, 244, 9, 0.1); /* Soft shadow */
+            background-color: white;
+            text-align: center;
+            margin-left: 500px;
+            align-items: center;
+            padding: 20px;
+            scroll-behavior: smooth;
+            margin-bottom: 300px;
+            width: 1100px;
+            margin-top: 100px;
+          }
+          .chapters_text{
+            background-color: rgb(233, 172, 135);
+            font-size: 22px;
+            padding: 10px;
+            text-decoration: none;
+            color: white;
+            border-radius: 25px;
+            border-color: white;
+            border-width: 3px;
+            border-style: solid;
+          }
+          .chapters_text:hover{
+            background-color: rgb(20, 186, 223);
+            color: white;
+            font-size: 30px;
+            border-radius: 25px;
+            border-color: white;
+            border-width: 3px;
+            border-style: solid;
+          }
+          .navbar {
+            background-color: darkblue;
+            padding: 15px;
+        }
+
+        .navbar-brand {
+            font-size: 25px;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .navbar-nav  {
+            color: white;
+            font-size: 20px;
+            margin-right: 15px;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+        .navbar a {
+            color: white;
+            margin-right: 15px;
+            text-decoration: none;
+            font-size: 21px;
+        }
+        .navbar-nav a:hover {
+            color: white;
+            transform: scale(1.1);
+            font-size: 28px;
+        }
+          
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">AstroIQ</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="/admin">Go to Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h2 class="text-center mb-4">📚 Subject Management</h2>
+        <p class="text-center" style="font-size: 20px; font-weight:bold;">Manage subjects and chapters efficiently.</p>
+        <br><br>
+    
+        <div class="row">
+            {% for subject in all_subjects %}
+            <div class="col-lg-9 col-md-6 col-sm-12 mb-4 d-flex align-items-stretch">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <a class="subject_link" href="/subject/{{ subject.id }}" class="text-">
+                            📖 {{ subject.name }}
+                        </a>
+                        <br><br><br>
+                        <p class="text" style="font-size: 23px; font-weight:bold; background-color:white; border-radius:40px; color:black;">Chapters:</p>
+
+                        {% if subject.chapters %}
+                            <div class="d-flex flex-wrap justify-content-center">
+                                {% for chapter in subject.chapters %}
+                                    <div class="d-flex align-items-center m-2">
+                                        <!-- Chapter Link -->
+                                        <a href="/chapter/{{ chapter.id }}" class="chapters_text">
+                                            📚 {{ chapter.name }}
+                                        </a>
+                                        <!-- Manage Quiz Button -->
+                                        <a href="/manage_quizzes/{{ chapter.id }}" class="btn btn-info btn-sm me-2">
+                                            🎯 Manage Quizzes
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <p class="text-muted">No chapters yet.</p>
+                        {% endif %}
+
+
+                        <br><br>
+    
+                        <div class="mt-3">
+                            <a href="/edit_subject/{{ subject.id }}" class="btn btn-warning btn-sm">
+                                ✏️ Edit
+                            </a>
+                            <a href="/delete_subject/{{ subject.id }}" class="btn btn-danger btn-sm">
+                                🗑️ Delete
+                            </a>
+                            <a href="/add_chapter/{{ subject.id }}" class="btn btn-primary btn-sm">
+                                ➕ Add Chapter
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    
+        <!-- Add Subject Button -->
+        <div class="text-center mt-4">
+            <a href="/create_subject" class="add-subject-btn">➕ Add New Subject</a>
+        </div>
+        
+        <br><br>
+        <a href="/admin" class="edit-btn">Back to dashboard</a>
+    </div>
+    
+
+</body>
+</html>

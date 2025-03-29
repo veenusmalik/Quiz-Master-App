@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Bonus Quiz Management</title>
+      <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+      <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+      <style>
+          body {
+              font-family: 'Arial', sans-serif;
+              background-image: url(/static/images/admin/admin_view_bonus.jpg);
+              background-attachment: fixed;
+              background-repeat: no-repeat;
+              background-size: 560px;
+          }
+
+          .navbar {
+            background-color: darkblue;
+            padding: 15px;
+        }
+
+        .navbar-brand {
+            font-size: 25px;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .navbar-nav  {
+            color: white;
+            font-size: 20px;
+            margin-right: 15px;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+        .navbar a {
+            color: white;
+            margin-right: 15px;
+            text-decoration: none;
+            font-size: 21px;
+        }
+        .navbar-nav a:hover {
+            color: white;
+            transform: scale(1.1);
+            font-size: 28px;
+        }
+          .card {
+              background: linear-gradient(to right,#f7b3bd, rgb(251, 240, 240));
+              border-radius: 60px;
+              padding: 30px;
+              text-align: center;
+              transition: transform 0.3s, box-shadow 0.3s;
+              box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+              margin-left: 30%;
+              margin-top: 100px;
+              width: 1100px;
+          }
+          .card:hover {
+              transform: scale(1.05);
+              box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.3);
+          }
+          .button {
+              background: linear-gradient(to right, #6a11cb, #2575fc);
+              font-size: 22px;
+              border-radius: 50px;
+              padding: 15px 30px;
+              text-decoration: none;
+              color: white;
+              transition: all 0.3s ease-in-out;
+              border-color: white;
+              border-width: 2px;
+              border-style: solid;
+          }
+          .button:hover {
+              font-size: 26px;
+              border-color: darkblue;
+              border-width: 2px;
+              border-style: solid;
+              background: none;
+              color: darkblue;
+              background-color: white;
+          }
+          .table {
+              background-color: white;
+              border-radius: 10px;
+              overflow: hidden;
+              box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+          }
+          .table thead {
+              background: linear-gradient(to right, #6a11cb, #2575fc);
+              color: white;
+          }
+          .edit-btn {
+              background: linear-gradient(to right, #6a11cb, #2575fc);
+              color: white;
+              padding: 10px 20px;
+              text-decoration: none;
+              border-radius: 50px;
+              transition: 0.3s;
+              display: inline-block;
+              margin-top: 20px;
+              font-size: 25px;
+              text-transform: uppercase;
+              font-weight: bold;
+          }
+          .edit-btn:hover {
+              color: darkblue;
+              background-color: beige;
+              border-radius: 50px;
+              border-color: darkblue;
+              border-width: 2px;
+              border-style: solid;
+              background: none;
+              font-size: 32px;
+              margin-left: 750px;
+          }
+          h5{
+            font-size: 28px;
+            background-color: white;
+            padding: 20px;
+            text-transform: uppercase;
+            border-radius: 50px;
+            font-weight: bold;
+          }
+          .edit_bonus{
+            font-size:15px;
+            font-weight: bold;
+            background-color: rgb(193, 193, 11);
+            border-radius: 25px;
+            border-color: white;
+            border-width: 2px;
+            border-style: solid;
+            padding: 10px;
+            text-transform: uppercase;
+            color: white;
+            text-decoration: none;
+          }
+          .edit_bonus:hover{
+            background-color: darkkhaki;
+            color: white;
+            font-size: 20px;
+          }
+          .delete_bonus{
+            font-size:15px;
+            font-weight: bold;
+            background-color: red;
+            border-radius: 25px;
+            border-color: white;
+            border-width: 2px;
+            border-style: solid;
+            padding: 10px;
+            text-transform: uppercase;
+            color: white;
+            text-decoration: none;
+          }
+          .delete_bonus:hover{
+            background-color: darkred;
+            color: white;
+            font-size: 20px;
+          }
+          .manage_bonus{
+            font-size:15px;
+            font-weight: bold;
+            background-color: green;
+            border-radius: 25px;
+            border-color: white;
+            border-width: 2px;
+            border-style: solid;
+            padding: 10px;
+            text-transform: uppercase;
+            color: white;
+            text-decoration: none;
+          }
+          .manage_bonus:hover{
+            background-color: darkgreen;
+            color: white;
+            font-size: 20px;
+          }
+          .table tbody tr{
+            height: 60px;
+            align-items: center;
+            padding: 10px;
+          }
+      </style>
+    </head>
+<body>
+      <nav class="navbar navbar-expand-lg navbar-dark">
+          <div class="container-fluid">
+              <a class="navbar-brand" href="/">AstroIQ</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav ms-auto">
+                      <li class="nav-item">
+                          <a href="/admin">Go to Dashboard</a>
+                      </li>
+                      <li class="nav-item">
+                          <a href="/logout">Logout</a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+      <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h5>Bonus Quiz Management</h5>
+                <p style="color: white; font-size:25px;">Manage bonus quizzes and rewards.</p>
+                
+                <table class="table table-bordered mt-3">
+                    <thead>
+                        <tr>
+                            <th>Bonus Quiz Name</th>
+                            <th>Description</th>
+                            <th>Date</th>
+                            <th>Duration (min)</th>
+                            <th>Points</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for bonus_quiz in new_bonus_quiz %}
+                        <tr>
+                            <td>{{ bonus_quiz.name }}</td>
+                            <td>{{ bonus_quiz.description }}</td>
+                            <td>{{ bonus_quiz.date_of_quiz }}</td>
+                            <td>{{ bonus_quiz.time_duration }}</td>
+                            <td>{{ bonus_quiz.reward_points }}</td>
+                            <td>{{ bonus_quiz.status }}</td>
+                            <td>
+                                <a href="/edit_bonus_quiz/{{ bonus_quiz.id }}" class="edit_bonus">Edit</a><br><br>
+                                <a href="/delete_bonus_quiz/{{ bonus_quiz.id }}" class="delete_bonus">Delete</a><br><br>
+                                <a href="/manage_bonus_questions/{{ bonus_quiz.id }}" class="manage_bonus">Manage</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <br><br><br>
+                <div class="text-center mt-4">
+                    <a href="/create_bonus_quiz" class="button">+ Add Bonus Quiz</a>
+                </div>
+            </div>
+        </div>
+          <br><br>
+          <a href="/admin" class="edit-btn" style="margin-left: 870px;">Go Back</a>
+      </div>
+  </body>
+</html>

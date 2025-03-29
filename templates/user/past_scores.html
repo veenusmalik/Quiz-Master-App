@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Past Quiz Scores</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .navbar {
+            background-color: darkblue;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            font-size: 25px;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+        }
+        .navbar-brand:hover{
+            color: white;
+            font-size: 28px;
+        }
+
+        .navbar-nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        .navbar-nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            margin-right: 45px;
+        }
+
+        .navbar-nav a:hover {
+            transform: scale(1.1);
+            font-size: 24px;
+        }
+        .edit-btn {
+            background-color: #ffa200;
+            border: none;
+            font-weight: bold;
+            font-size: 25px;
+            padding: 15px 30px;
+            margin-top: 20px;
+            border-radius: 30px;
+            color: white;
+            text-decoration: none;
+            margin-left: 800px;
+        }
+        .edit-btn:hover {
+            background-color: #f60808;
+            color: white;
+        }
+        .container{
+            margin-top: 120px;
+            margin-bottom: 100px;
+        }
+        body{
+            background-image: url(/static/images/user/past_scores.jpg);
+            background-repeat: no-repeat;
+            background-position: 10px center;
+            background-size: 500px;
+            background-attachment: fixed;
+            background-position-y: center;
+        }
+        .table{
+            margin-left: 450px;
+            width: 900px;
+        }
+        h2{
+            background-color: darkblue;
+            padding: 15px;
+            font-size: 42px;
+            text-transform: uppercase;
+            color: white;
+            margin-left: 500px;
+            text-align: center;
+            border-radius: 50px;
+            font-weight: bold;
+        }
+        .table tbody tr:hover{
+            background-color: lightyellow;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar fixed-top">
+        <a class="navbar-brand" href="/">AstroIQ</a>
+        <div class="navbar-nav">
+            <a href="/user_dashboard/{{ user.username }}">Go to Dashboard</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </nav> 
+    <div class="container">
+        <h2>Past Quiz Scores</h2>
+        <table class="table table-bordered hover">
+            <thead class="table" style="font-size: 20px; font-weight: bold; background-color: beige;">
+                <tr>
+                    <th>Quiz ID</th>
+                    <th>Score</th>
+                    <th>Date</th>  <!-- Show Date -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for attempt in past_scores %}
+                <tr>
+                    <td>{{ attempt.quiz_id }}</td>
+                    <td>{{ attempt.score }}</td>
+                    <td>{{ attempt.attempt_time }}</td>  <!-- Make sure this field exists in your model -->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br><br>
+        <a href="/user_summary/{{ user.id }}" class="edit-btn">Go Back</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Attempt</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f6f9fc, #dde9f2);
+            color: #222;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: darkblue;
+            padding: 15px;
+        }
+
+        .navbar-brand {
+            font-size: 25px;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .navbar-nav  {
+            color: white;
+            font-size: 20px;
+            margin-right: 15px;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+        .navbar a {
+            color: white;
+            margin-right: 15px;
+            text-decoration: none;
+            font-size: 21px;
+        }
+        .navbar-nav a:hover {
+            color: white;
+            transform: scale(1.1);
+            font-size: 28px;
+        }
+
+        /* Quiz Container */
+        .quiz-container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 700px;
+            text-align: left;
+            margin: 50px auto;
+            margin-top: 80px;
+        }
+
+        /* Timer */
+        .timer {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: right;
+            color: #d9534f;
+            background: #fff3cd;
+            padding: 10px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-bottom: 15px;
+            width: 250px;
+            align-items: center;
+            margin-left: 200px;
+        }
+
+        /* Quiz Heading */
+        .quiz-container h2 {
+            background: darkblue;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* Input Styling */
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        /* Question Styling */
+        .question {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        /* Styled Radio Buttons */
+        .option-label {
+            display: block;
+            background: #f8f9fa;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            transition: 0.3s;
+        }
+
+        .option-label:hover {
+            background: #dff6ff;
+            border: 1px solid #007bff;
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            background: #28a745;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+            text-transform: uppercase;
+        }
+
+        .submit-btn:hover {
+            background: #218838;
+            transform: scale(1.05);
+        }
+        .exit-btn {
+            background: #ef0707;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+            text-transform: uppercase;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+        }
+
+        .exit-btn:hover {
+            background: #760303;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">AstroIQ</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a href="/user_dashboard/{{ user.username }}">Dashboard</a></li>
+                    <li class="nav-item"><a href="/logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Quiz Content -->
+    <div class="quiz-container">
+        <h2>🚀 Quiz: {{ quiz.id }}</h2>
+
+        <!-- Timer -->
+        <div class="timer"><center>Time Left: <span id="timer">05:00</center></span></div>
+
+        <form id="quizForm" action="{{ url_for('submit_quiz', quiz_id=quiz.id, username=user.username) }}" method="POST">
+            <label class="question">Your name: 
+                <input type="text" name="username" value="{{ user.username if user else '' }}" required>
+            </label>
+
+            {% for question in questions %}
+                <p class="question">{{ question.question_statement }}</p>
+                <label class="option-label">
+                    <input type="radio" name="question_{{ question.id }}" value="1"> {{ question.option1 }}
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="question_{{ question.id }}" value="2"> {{ question.option2 }}
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="question_{{ question.id }}" value="3"> {{ question.option3 }}
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="question_{{ question.id }}" value="4"> {{ question.option4 }}
+                </label>
+                <br><br>
+            {% endfor %}
+
+            <button type="submit" class="submit-btn">Submit</button>
+            <a href = "/user_dashboard/{{ user.username }}" class="exit-btn">Exit</a>
+        </form>
+    </div>
+
+    <!-- Timer Script -->
+    <script>
+        let timeLeft = 300;  // Set time limit (in seconds) -> 5 minutes
+
+        function startTimer() {
+            let timerDisplay = document.getElementById("timer");
+            let countdown = setInterval(function () {
+                let minutes = Math.floor(timeLeft / 60);
+                let seconds = timeLeft % 60;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+                timerDisplay.textContent = minutes + ":" + seconds;
+
+                if (timeLeft <= 0) {
+                    clearInterval(countdown);
+                    document.getElementById("quizForm").submit();  // Auto-submit quiz
+                }
+
+                timeLeft--;
+            }, 1000);
+        }
+
+        window.onload = startTimer;  // Start timer when page loads
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ subject.name }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        body {
+            background-color: white;
+            background-image: url(/static/images/admin/subject.jpg);
+            background-repeat: no-repeat;
+            background-size: 750px;
+            background-position: left bottom;
+        }
+        .card-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin-left: 700px;
+            margin-top: 100px;
+            margin-bottom: 100px;
+            width: 1100px;
+        }
+        .custom-card {
+            width: 90%;
+            background-color: rgb(248, 248, 233);
+            border: 10px solid white;
+            border-radius: 50px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+        }
+        .card-header {
+            background-color: #067c80;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 40px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 50px;
+        }
+        .table-container {
+            overflow-x: auto;
+            padding: 20px;
+        }
+        .table {
+            border-collapse: separate;
+            border-spacing: 0;
+            width: 100%;
+            font-size: 22px;
+            text-align: center;
+        }
+        .table thead {
+            background-color: rgb(2, 59, 59);
+            color:white;
+            font-size: 24px;
+        }
+        .table tbody tr {
+            background-color: white;
+            transition: background 0.3s ease-in-out;
+        }
+        .table td, .table th {
+            padding: 15px;
+            vertical-align: middle;
+        }
+        .btn-action {
+            font-size: 18px;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 10px;
+            display: inline-block;
+            width: 120px;
+            text-align: center;
+        }
+        .btn-edit {
+            background-color: #f0f02e;
+            color: black;
+            border: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-radius: 40px;
+        }
+        .btn-edit:hover {
+            background-color: #e17b0e;
+            color: white;
+        }
+        .btn-delete {
+            background-color: #e70f5e;
+            color: white;
+            border: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-radius: 40px;
+        }
+        .btn-delete:hover {
+            background-color: #08beb8;
+            color: white;
+        }
+        .btn-primary {
+            background-color: #e5e910;
+            border: none;
+            font-weight: bold;
+            font-size: 25px;
+            padding: 15px 30px;
+            margin-top: 20px;
+            border-radius: 30px;
+        }
+        .btn-primary:hover {
+            background-color: #ea600a;
+            color: white;
+        }
+        .btn-secondary {
+            background-color: #ffa200;
+            border: none;
+            font-weight: bold;
+            font-size: 25px;
+            padding: 15px 30px;
+            margin-top: 20px;
+            border-radius: 30px;
+        }
+        .btn-secondary:hover {
+            background-color: #f60808;
+        }
+        .navbar {
+            background-color: darkblue;
+            padding: 15px;
+        }
+
+        .navbar-brand {
+            font-size: 25px;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .navbar-nav  {
+            color: white;
+            font-size: 20px;
+            margin-right: 15px;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+        .navbar a {
+            color: white;
+            margin-right: 15px;
+            text-decoration: none;
+            font-size: 21px;
+        }
+        .navbar-nav a:hover {
+            color: white;
+            transform: scale(1.1);
+            font-size: 28px;
+        }
+        .view_chapter_button{
+            background-color: black;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 30px;
+        }
+        .view_chapter_button:hover{
+            background-color: white;
+            border-color: black;
+            color: black;
+            border-width: 2px;
+            border-style: solid;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">AstroIQ</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="/admin">Go to Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container card-container">
+        <div class="card custom-card">
+            <div class="card-header">
+                {{ subject.name }}
+            </div>
+            <div class="card-body">
+                <p class="text-center" style="font-size: 24px; color:black"><strong>{{ subject.description }}</strong></p>
+
+                <div class="text-center mb-3">
+                    {% if subject.name == subject.name %}
+                    <img src="/static/images/quiz/{{ subject.name }}.jpg" class="chapter-image" height="300px" width="300px">
+                    {% endif %}
+                </div>
+                
+                <h4 class="chapter-title text-center p-3" style="color:white; font-size:30px; background-color:rgb(7, 147, 128); border-radius:60px; text-transform:uppercase; ">
+                    Chapters
+                </h4>
+                
+                <div class="table-container">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Chapter Name</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for chapter in subject.chapters %}
+                            <tr>
+                                <td>{{ chapter.id }}</td>
+                                <td>
+                                    <a href="/view_chapter/{{ subject.id }}/{{ chapter.id }}" 
+                                       class="view_chapter_button">
+                                        {{ chapter.name }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="/edit_chapter/{{ chapter.id }}" class="btn btn-edit btn-action">Edit</a>
+                                        <a href="/delete_chapter/{{ chapter.id }}" class="btn btn-delete btn-action">Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% else %}
+                            <tr>
+                                <td colspan="3" class="text-center text-muted">No chapters yet.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="text-center">
+                    <a href="/add_chapter/{{ subject.id }}" class="btn btn-lg btn-primary">+ Add Chapter</a>
+                    <a href="/view_subjects" class="btn btn-lg btn-secondary">Go Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

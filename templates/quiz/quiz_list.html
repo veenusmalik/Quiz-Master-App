@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2> Quizzes</h2>
+<ul>
+    {% for quiz in quizzes %}
+        <li>
+            <h3>{{ quiz.name }}</h3>
+            <p>{{ quiz.description }}</p>
+            <p>⏳ Duration: {{ quiz.time_duration }} min</p>
+            <a href="{{ url_for('start_quiz', quiz_id=quiz.id, username=this_user.username) }}">Start Quiz</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Quizzes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f4f9;
+            display: flex;
+            min-height: 100vh;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1800px;
+        }
+
+        .quiz-container {
+            display: flex;
+            margin-top: 100px;
+            margin-bottom: 200px;
+        }
+
+        /* Content Card */
+        .quiz-content-card {
+            width: 90%;
+            padding: 20px;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            height: 800px;
+            margin-left: 100px;
+        }
+
+        h2 {
+            color: black;
+            font-size: 35px;
+            font-weight: bold;
+            text-transform: uppercase;
+            background-color: beige;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Add Quiz Button */
+        .btn-success {
+            background: #23036d;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            font-size: 23px;
+            text-transform: uppercase;
+            border-radius: 50px;
+            font-weight: bold;
+        }
+
+        .btn-success:hover {
+            background: rgb(170, 63, 170);
+            font-size: 30px;
+        }
+
+        .table {
+            margin-top: 15px;
+            border-radius: 10px;
+        }
+
+        .table thead {
+            background: black;
+            color: white;
+            font-size: 20px;
+        }
+
+        /* Improved Action Buttons */
+        .btn-warning, .btn-danger, .btn-info {
+            font-size: 18px;
+            padding: 10px 15px;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-radius: 10px;
+            transition: 0.3s ease-in-out;
+        }
+
+        .btn-warning {
+            background-color: #ff9800;
+            color: white;
+            border: none;
+        }
+
+        .btn-warning:hover {
+            background-color: #ac6904;
+            transform: scale(1.1);
+            color: white;
+        }
+
+        .btn-danger {
+            background-color: #d32f2f;
+            color: white;
+            border: none;
+            margin-left: 20px;
+        }
+
+        .btn-danger:hover {
+            background-color: #7d0606;
+            transform: scale(1.1);
+            color: white;
+        }
+
+        .btn-info {
+            background-color: #0288d1;
+            color: white;
+            border: none;
+            margin-left: 20px;
+        }
+
+        .btn-info:hover {
+            background-color: #033459;
+            transform: scale(1.1);
+            color: white;
+        }
+
+        /* Back to Dashboard Button */
+        .btn-secondary {
+            display: block;
+            margin-top: 15px;
+            text-align: center;
+            width: 100%;
+            text-transform: uppercase;
+            background-color: rgb(184, 7, 7);
+            font-size: 23px;
+            border-radius: 50px;
+            font-weight: bold;
+        }
+
+        .btn-secondary:hover {
+            font-size: 30px;
+            background-color: rgb(175, 68, 68);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .quiz-container {
+                flex-direction: column;
+            }
+
+            .quiz-content-card {
+                width: 100%;
+            }
+
+            .btn-success {
+                font-size: 16px;
+                padding: 10px;
+            }
+
+            .btn-warning, .btn-danger, .btn-info {
+                font-size: 14px;
+                padding: 8px 12px;
+            }
+        }
+        .navbar {
+            background-color: darkblue;
+            padding: 15px;
+        }
+
+        .navbar-brand {
+            font-size: 25px;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .navbar-nav  {
+            color: white;
+            font-size: 20px;
+            margin-right: 15px;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+        .navbar a {
+            color: white;
+            margin-right: 15px;
+            text-decoration: none;
+            font-size: 21px;
+        }
+        .navbar-nav a:hover {
+            color: white;
+            transform: scale(1.1);
+            font-size: 28px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">AstroIQ</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="/admin">Go to Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <div class="quiz-container">
+
+            <!-- Content Card -->
+            <div class="card quiz-content-card">
+                <h2>📚 Quizzes for Chapter: {{ chapter.name }}</h2>
+
+                <table class="table table-bordered table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Quiz Date</th>
+                            <th>Time Duration (mins)</th>
+                            <th>Status</th>
+                            <th>Number of Questions</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for quiz in chapter.quizzes %}
+                        <tr>
+                            <td>{{ quiz.date_of_quiz }}</td>
+                            <td>{{ quiz.time_duration }}</td>
+                            <td>{{ quiz.status }}</td>
+                            <td>{{ quiz.questions|length }}</td>  
+                            <td>
+                                <a href="/edit_quiz/{{ quiz.id }}" class="btn btn-warning">EDIT</a>
+                                <a href="/delete_quiz/{{ quiz.id }}" class="btn btn-danger">DELETE</a>
+                                <a href="/manage_questions/{{ quiz.id }}" class="btn btn-info">MANAGE QUESTIONS</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <br><br><br><br><br><br><br><br>
+                <a href="/add_quiz/{{ chapter.id }}" class="btn btn-success mb-3">+ ADD QUIZ</a><br>     
+                <a href="/view_subjects" class="btn btn-secondary">Go Back</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

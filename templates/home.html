@@ -1,0 +1,1066 @@
+<! DOCTYPE html>
+
+<html lang = "en">
+
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+        <title>
+            AstroIQ
+        </title>
+        <link rel = "stylesheet" href = "style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <style>
+            *{
+    margin : 0;
+    padding : 0;
+    font-family : sans-serif;
+    box-sizing : border-box;
+    text-decoration : none;
+}
+
+.parallax {
+  background-image: url("your-image.jpg");
+  height: 100vh; /* Full-screen height */
+  background-attachment: fixed; /* Makes the image stay in place */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+body{
+    overscroll-behavior: none;
+}
+
+html{
+    scroll-behavior : smooth;
+}
+
+/* navbar */
+nav{
+    display : flex;
+    justify-content : space-around;
+    align-items : center;
+    position : fixed;
+    right : 0;
+    left : 0;
+    background-color: #E9EDC9;
+    box-shadow : 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index : 1000;
+}
+nav .logo img{
+    width : 70px;
+    cursor : pointer;
+    margin : 5px;
+}
+nav ul{
+    list-style : none;
+    margin-left : 400px; 
+}
+nav ul li{
+    display : inline-block;
+    margin : 0 15px; 
+}
+nav ul li a{
+    color : #000;
+    font-weight : 800;
+    font-size : 23px;
+    transition : 0.2s;
+    font-family: 'Exo 2', sans-serif;
+} 
+nav ul li a::after{
+    content : '';
+    width : 0;
+    height : 2px;
+    background : rgb(255, 255, 255);
+    display : block;
+    transition : 0.2s;
+}
+nav ul li a:hover::after{
+    width : 100%
+} 
+/* the blue lines below the menu items */
+nav ul li a:hover{
+    color : white;
+    text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
+} 
+/* the blue color of the text when hovering over menu items */
+
+/* Home Page */
+section .Home{
+    margin-top: 0px;
+}
+section .home{
+    display : flex;
+    align-items : center;
+    justify-content : space-around;
+    position:relative;
+    height: 110%;
+    width:100%;
+}
+section .home .home_text h1{
+    position : relative;
+    font-size : 60px;
+    text-align: center;
+    margin-top: 80px;
+    margin-left: 90px;
+
+} 
+.home_text span{
+    position : relative;
+    font-size : 60px;
+    margin-top: 40px;
+    margin-left: 50px;
+    color : rgb(115, 9, 111);
+    font-size : 240px;
+    font-family: 'Olivia';
+}
+@font-face {
+    font-family: 'Olivia';
+    src: url('fonts/Olivia.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+.home .image {
+    border-radius: 15px;
+    margin-left: 40px;
+}
+.text-loading {
+    display: inline-block;
+    font-size: 24px;
+    font-weight: bold;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid transparent; /* Optional blinking effect */
+    animation: typing 2s steps(20, end) forwards, blink 0s;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: black;
+    }
+}
+.home {
+    background-image: url('/static/images/home/logo.jpg'); /* Your background image */
+    background-size:contain;
+    background-position: right;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+.home .glassy-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+    backdrop-filter: blur(20px); /* Blurry glass effect */
+    -webkit-backdrop-filter: blur(5px); /* Safari support */
+    z-index: -1;
+}
+
+
+/* Quotes */
+.quotes-slider {
+    width: 70%;
+    margin: auto;
+    overflow: hidden;
+    padding: 50px 0;
+    position: relative;
+}
+
+.slider {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.slide-track {
+    display: flex;
+    width: calc(450px * 6); /* Adjust based on the number of quotes */
+    animation: scroll 15s linear infinite;
+}
+
+.slide {
+    width: 400px; /* Adjust the width based on your design */
+    flex-shrink: 0;
+    padding: 10px;
+}
+
+.card {
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.blockquote {
+    font-size: 28px;
+    font-weight: bold;
+    color: black;
+}
+
+/* Continuous Scrolling Animation */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* about page */
+section .about{
+    align-items : center;
+    justify-content : space-around;
+    position:relative;
+    height: 200%;
+    width:100%;
+}
+.about {
+    text-align: center;
+    padding: 50px 0;
+}
+
+.about h2 span {
+    font-family: 'Luckiest Guy';
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+.about h2 {
+    margin-top: 25px;
+    font-size: 100px;
+    position: relative;
+    bottom: 70px;
+    text-align: center;
+    text-decoration: underline;
+    color: rgb(102, 2, 160);
+    font-family: 'Luckiest Guy';
+    text-transform: uppercase;
+    font-weight: normal;
+}
+.av_box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the cards */
+    gap: 20px; /* Space between cards */
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+}
+
+.av_card {
+    width: calc(33.33% - 20px); /* Three cards per row */
+    height: 450px; /* Increase height to make cards longer */
+    padding: 20px;
+    border-radius: 15px;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribute content properly */
+    background-color: white;
+}
+
+.av_image {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.av_image img {
+    width: 70%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+    transition: 0.3s;
+    border-radius: 10px;
+}
+
+.av_image:hover img {
+    transform: scale(1.1);
+}
+.av_info {
+    flex-grow: 1; /* Ensures text fills available space */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.av_info p {
+    margin: 10px 0 0;
+    line-height: 28px;
+    font-size: 22px;
+}
+
+
+
+/* Features */
+.features {
+    text-align: center;
+    padding: 50px 0;
+}
+.features h2 span {
+    font-family: 'Luckiest Guy';
+    text-transform: uppercase;
+    font-weight: normal;
+}
+.features h2 {
+    margin-top: 25px;
+    font-size: 100px;
+    position: relative;
+    bottom: 70px;
+    text-align: center;
+    text-decoration: underline;
+    color: rgb(102, 2, 160);
+    font-family: 'Luckiest Guy';
+    text-transform: uppercase;
+    font-weight: normal;
+}
+.av_box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the cards */
+    gap: 20px; /* Space between cards */
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+}
+
+.av_card {
+    width: calc(33.33% - 20px); /* Three cards per row */
+    height: 550px; /* Increase height to make cards longer */
+    padding: 20px;
+    border-radius: 15px;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribute content properly */
+}
+
+.av_image {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.av_image img {
+    width: 70%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+    transition: 0.3s;
+    border-radius: 10px;
+}
+
+.av_image:hover img {
+    transform: scale(1.1);
+}
+.av_info {
+    flex-grow: 1; /* Ensures text fills available space */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.av_info p {
+    margin: 10px 0 0;
+    line-height: 28px;
+    font-size: 22px;
+}
+
+/* Contact */
+section .contact{
+    align-items : center;
+    justify-content : space-around;
+    position:relative;
+    height: 100%;
+    width:100%;
+}
+.contact {
+    text-align: center;
+    padding: 50px 0;
+}
+
+.contact h2 span {
+    font-family: 'Luckiest Guy';
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+.contact h2 {
+    margin-top: 25px;
+    font-size: 100px;
+    position: relative;
+    bottom: 70px;
+    text-align: center;
+    text-decoration: underline;
+    color: rgb(102, 2, 160);
+    font-family: 'Luckiest Guy';
+    text-transform: uppercase;
+    font-weight: normal;
+}
+.container{
+    position : relative;
+    width : 100%;
+    height : 100%;
+    display : flex;
+    justify-content : center;
+    align-items : center;
+    padding : 20px 100px;
+} 
+.container:after{
+    content : '';
+    position : absolute;
+    width : 100%;
+    height : 100%;
+    left : 0;
+    top : 0;
+    filter : blur(50px); 
+    z-index : -1; 
+} 
+.contact_box{
+    max-width : 1200px;
+    height: 650px;
+    display : grid;
+    grid-template-columns : repeat(2, 1fr);
+    justify-content : center;
+    align-items : center;
+    text-align : center;
+    background-color : #fff;
+    box-shadow : 0 0 19px 5px #f4c5f2;
+    border-radius: 30px;
+} 
+.left{
+    height : 100%;
+    width: 70%;
+    background-color: #e3f9e0;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+.right{
+    padding : 25px 40px;
+} 
+.field{
+    width : 100%;
+    border : 2px solid rgba(0, 0, 0, 0);
+    outline : none;
+    padding : 0.5rem 1rem;
+    background : #f3f6de;
+    font-size : 1.1rem;
+    margin-bottom : 22px;
+    transition : 0.3s;
+} 
+.field:hover{
+    background : rgba(0, 0, 0, 0.1);
+}
+.contact button {
+    width : 100%;
+    padding : 0.5rem 1rem;
+    background : rgb(102, 2, 160);
+    color : #fff;
+    font-size : 1.1rem; 
+    border : none;
+    cursor : pointer;
+    transition : 0.3s;
+    border-radius: 20px;
+}
+.contact button:hover{
+    background : #e3f9e0;
+    color : rgb(102, 2, 160);
+}
+.field:focus{
+    border : 2px solid rgb(102, 2, 160);
+    background : #fff; 
+}
+
+/* Footer */
+footer{
+    width : 100%;
+    padding : 100px 0 0 20px;
+    background : beige;
+}
+footer .footer_home{
+    display : grid;
+    grid-template-columns : 1fr 1fr 1fr 1fr 1fr;
+} 
+.footer_home .footer_tag{
+    text-align : center;
+    color:#330250;
+    font-size: 20px;
+    background-color: white;
+}
+.footer_tag h2{
+    color : white;
+    background-color: #330250;
+    margin-bottom : 25px;
+    font-size : 40px;
+} 
+.footer_tag p{
+    margin : 10px 0;
+    color:#330250; 
+    font-size: 25px;
+}
+.footer_tag i{
+    margin : 0 5px;
+    cursor : pointer;
+}
+.footer_tag i:hover{
+    color : darkgreen;
+}
+.footer_tag a{
+    margin : 0 5px;
+    cursor : pointer;
+}
+.footer_tag a:hover{
+    color : darkgreen;
+}
+footer .end{
+    display : flex;
+    align-items : center;
+    justify-content : center;
+    padding : 15px;
+    font-size: 30px;
+    background-color: white;
+    border-radius: 25px;
+    margin-bottom: 30px;
+}
+footer .end span{
+    color :#330250;
+    margin-left : 10px; 
+    font-size: 40px;
+    font-weight: 15px;
+}  
+
+/* join */
+.join {
+    display: flex;
+    align-items: center; 
+    gap: 20px; 
+    margin: 50px auto; /* Centering */
+    max-width: 1200px;
+}
+
+.join-image {
+    height: 800px;
+    width: 650px;
+    border-radius: 15px;
+}
+
+.join-card {
+    backdrop-filter: blur(10px); 
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(13, 2, 220, 0.9);
+    width: 650px; 
+    height : 800px;
+    text-align: center;
+    align-items: center;
+    background-color: #e5fdfd;
+}
+.join_text p {
+    font-size: 30px;
+    margin-top: 40px;
+    color: #333;
+}
+
+/* Button styling */
+.join-button {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 45px;
+    background: #330250; /* Blue button */
+    color: white;
+    text-decoration: none;
+    border-radius: 40px;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.join-button:hover {
+    background: white;
+    color:#330250;
+}
+
+
+        </style>
+    </head>
+
+<body>
+    
+    <nav>
+        <div class = "logo">
+            <img src = "/static/images/home/logo.jpg" alt = "logo">
+        </div>
+        <!---ul>li*6>a
+        <ul>
+            <li><a href=""></a></li>
+            <li><a href=""></a></li>
+            <li><a href=""></a></li>
+            <li><a href=""></a></li>
+            <li><a href=""></a></li>
+            <li><a href=""></a></li>
+        </ul>
+        -->
+        <ul>
+            <li> <a href = "#Home"> Home </a> </li>
+            <li> <a href = "#About"> About </a> </li>
+            <li> <a href = "#Features"> Features </a> </li>
+            <li> <a href = "#Contact"> Contact </a> </li>
+            <li> <a href = "/login"> Login </a> </li>
+        </ul>
+    </nav>
+
+    <br><br><br><br><br>
+
+    <section id = "Home">
+        <!-- Welcome Page -->
+        <div class = "home" id = "home">
+            <div class="glassy-bg"></div>
+            <img  class ="image" src="/static/images/home/astroiq.jpg" height="800px" width="750px">
+            <div class = "home_text">
+                <h1 style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: white;"> WELCOME TO </h1>
+                <span class = "text-loading" style="color: rgb(199, 252, 194); text-shadow: -5px -5px 0 black, 5px -5px 0 black, -2px 2px 0 black, 2px 2px 0 black;"> AstroIQ </span> 
+            </div>
+        </div>
+        <!-- write .home in html code and press enter and it will result in:
+        <div class="home"></div> -->       
+    </section>
+
+    <br><br><br><br><br>
+
+    <!-- Quote Slider Section -->
+<section class="quotes-slider">
+    <div class="slider">
+        <div class="slide-track">
+            <div class="slide">
+                <div class="card">
+                    <div class="card-body" style = "background-color: papayawhip;">
+                        <blockquote class="blockquote">
+                            <p>
+                                Wisdom begins in wonder.</p><br>
+                                <span style = "color:black;"> ~Socrates </span>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="card">
+                    <div class="card-body" style = "background-color: rgb(188, 250, 234);">
+                        <blockquote class="blockquote">
+                            <p>"Learning never exhausts the mind."</p> <br>
+                            <span style = "color:black;"> ~Leonardo da Vinci </span>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="card">
+                    <div class="card-body" style = "background-color: pink;">
+                        <blockquote class="blockquote">
+                            <p>"The expert in anything was once a beginner."</p>
+                            <span style = "color:black;"> ~Helen Hayes </span>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            <!-- Duplicate slides for smooth looping -->
+            <div class="slide">
+                <div class="card">
+                    <div class="card-body" style = "background-color: seashell;">
+                        <blockquote class="blockquote">
+                            <p>"Education is not preparation for life; education is life itself."</p>
+                            <span style = "color:black;"> ~Johny Dewey </span>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="card">
+                    <div class="card-body" style = "background-color: rgb(183, 246, 183);">
+                        <blockquote class="blockquote">
+                            <p>"The expert in anything was once a beginner."</p>
+                            <span style = "color:black;"> ~Helen Hayes </span>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="card">
+                    <div class="card-body" style = "background-color: rgb(255, 213, 151);">
+                        <blockquote class="blockquote">
+                            <p>"Reading is dreaming with open eyes."</p> <br>
+                            <span style = "color:black;"> ~Nelson Mandela </span>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="card">
+                    <div class="card-body" style = "background-color: seashell;">
+                        <blockquote class="blockquote">
+                            <p>"Education is not preparation for life; education is life itself."</p>
+                            <span style = "color:black;"> ~Johny Dewey </span>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="card">
+                    <div class="card-body" style = "background-color: rgb(183, 246, 183);">
+                        <blockquote class="blockquote">
+                            <p>"The expert in anything was once a beginner."</p>
+                            <span style = "color:black;"> ~Helen Hayes </span>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="card">
+                    <div class="card-body" style = "background-color: rgb(255, 213, 151);">
+                        <blockquote class="blockquote">
+                            <p>"Reading is dreaming with open eyes."</p> <br>
+                            <span style = "color:black;"> ~Nelson Mandela </span>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<br><br><br><br><br>
+
+    <!-------About------->
+    <section>
+        <div class="about" id="About">
+            <h2 class="about_text">About <span>Us</span></h2>
+            <h4>AstroIQ : Where Knowledge Meets Competition 🚀</h4>
+            <b>
+                <div class = "av_box">
+                    <div class = "av_card" style="box-shadow : 0 0 10px rgba(199, 10, 10, 0.5); background-color: rgb(221, 243, 222);">
+                        <div class = "av_image">
+                            <img src = "/static/images/home/about1.jpg">
+                        </div>
+                        <div class = "av_info">
+                            <p>
+                                AstroIQ is more than just a quiz platform — it's an immersive and competitive space designed for those who love to test their intelligence and challenge their limits.
+                            </p>
+                        </div>
+                    </div>
+                    <div class = "av_card" style="box-shadow : 0 0 10px rgba(5, 18, 166, 0.5); background-color: rgb(254, 241, 202);">
+                        <div class = "av_image">
+                            <img src = "/static/images/home/about2.jpg">
+                        </div>
+                        <div class = "av_info">
+                            <p>
+                                Our platform is built on the idea that knowledge should be both fun and rewarding.
+                            </p>
+                        </div>
+                    </div>
+                    <div class = "av_card" style="box-shadow : 0 0 10px rgba(5, 138, 76, 0.5); background-color: beige;">
+                        <div class = "av_image">
+                            <img src = "/static/images/home/about3.jpg">
+                        </div>
+                        <div class = "av_info">
+                            <p>
+                                Whether you're a trivia enthusiast, a student looking to sharpen your skills, or someone who enjoys a good intellectual battle, AstroIQ offers a space where learning and competition go hand in hand.
+                            </p>
+                        </div>
+                    </div>
+                    <div class = "av_card" style="box-shadow : 0 0 10px rgba(220, 227, 18, 0.5); background-color: rgb(239, 230, 250);">
+                        <div class = "av_image">
+                            <img src = "/static/images/home/about4.jpg">
+                        </div>
+                        <div class = "av_info">
+                            <p>
+                                We believe in creating an experience that goes beyond answering questions—AstroIQ is about strategy, progression, and achievement.
+                            </p>
+                        </div>
+                    </div>
+                    <div class = "av_card" style="box-shadow : 0 0 10px rgba(110, 226, 244, 0.5); background-color: rgb(201, 252, 252);">
+                        <div class = "av_image">
+                            <img src = "/static/images/home/about5.jpg">
+                        </div>
+                        <div class = "av_info">
+                            <p>
+                                As you attempt quizzes, you don't just see a score—you earn points, move up the ranks, and compete against others in a league-based system.
+                            </p>
+                        </div>
+                    </div>
+                    <div class = "av_card" style="box-shadow : 0 0 10px rgba(57, 216, 237, 0.5); background-color: rgba(246, 249, 158, 0.5);">
+                        <div class = "av_image">
+                            <img src = "/static/images/home/about6.jpg">
+                        </div>
+                        <div class = "av_info">
+                            <p>
+                                Your journey is more than just answering correctly; it's about proving your expertise and striving for the top spot.
+                            </p>
+                        </div>
+                    </div>
+                    <div class = "av_card" style="box-shadow : 0 0 10px rgba(77, 155, 244, 0.5); background-color: rgb(254, 228, 249);">
+                        <div class = "av_image">
+                            <img src = "/static/images/home/about7.jpg">
+                        </div>
+                        <div class = "av_info">
+                            <p>
+                                AstroIQ also brings a unique level of engagement and excitement to trivia.
+                            </p>
+                        </div>
+                    </div>
+                    <div class = "av_card" style="box-shadow : 0 0 10px rgba(87, 195, 228, 0.5); background-color: #E9EDC9;">
+                        <div class = "av_image">
+                            <img src = "/static/images/home/about8.jpg">
+                        </div>
+                        <div class = "av_info">
+                            <p>
+                                From bonus quizzes that offer instant results to animated celebrations for high scores, every aspect of the experience is designed to keep you motivated.
+                            </p>
+                        </div>
+                    </div>
+                    <div class = "av_card" style="box-shadow : 0 0 10px rgba(41, 1, 48, 0.5); background-color: rgb(198, 248, 225);">
+                        <div class = "av_image">
+                            <img src = "/static/images/home/logo.jpg">
+                        </div>
+                            <div class = "av_info">
+                                <p>
+                                    Whether you're playing for fun, sharpening your knowledge, or competing for the top ranks, AstroIQ is your ultimate destination for intelligent entertainment.
+                                </p>
+                            </div>
+                        </div>
+                    </div>  
+            </b>                                              
+        </div>
+    </section>
+
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+
+    <!------- Features ------->
+    <section>
+        <div class = "features" id = "Features">
+            <div class = "features_text">
+                <h2 class="features_text"> Features of AstroIQ </h2>
+                <h4> 
+                    At AstroIQ, we're not just another quiz platform—we're a next-level trivia experience designed to <br> 
+                    challenge, engage, and reward you like never before! 
+                </h4>
+                <span style="color: black; font-size: 35px; font-weight: 300px; background-color: #E9EDC9; border-radius: 10px;"> Here's why you should choose us: <br> <br> </span>
+                <b>
+                <div class = "av_box">
+                    <div class = "av_card" style="box-shadow : 0 0 10px rgba(199, 10, 10, 0.5); background-color: #f8f7d1;">
+                        <div class = "av_image">
+                            <img src = "/static/images/home/feature1.jpg">
+                        </div>
+                        <br> <br> <br>
+                        <h3 style = "background-color: white; border-radius: 10px;"> ✅ Engaging Quizzes </h3>
+                        <div class = "av_info">
+                            <p>
+                                Test your knowledge across a variety of topics with interactive, 
+                                well-crafted questions. 
+                            </p>
+                        </div>
+                    </div>
+                    <div class = "av_card" style="box-shadow : 0 0 10px rgba(5, 18, 166, 0.5); background-color: rgb(200, 243, 215);">
+                        <div class = "av_image">
+                            <img src = "/static/images/home/feature2.jpg">
+                        </div>
+                        <br> <br> <br>
+                        <h3 style = "background-color: white; border-radius: 10px;"> 🏆 Competitive Leaderboards </h3>
+                        <div class = "av_info">
+                            <p>
+                                Compete with friends and top players globally. 
+                                Rise through the leagues and prove your intelligence!
+                            </p>
+                        </div>
+                    </div>
+                    <div class = "av_card" style="box-shadow : 0 0 10px rgba(5, 138, 76, 0.5); background-color: rgb(252, 225, 174);">
+                        <div class = "av_image">
+                            <img src = "/static/images/home/feature3.jpg">
+                        </div>
+                        <br> <br> <br>
+                        <h3 style = "background-color: white; border-radius: 10px;"> 🎯 Earn Points & Rewards </h3>
+                        <div class = "av_info">
+                            <p>
+                                Every quiz attempt earns you points. 
+                                Climb the ranks and unlock new achievements!
+                            </p>
+                        </div>
+                    </div>
+                    <div class = "av_card" style="box-shadow : 0 0 10px rgba(220, 227, 18, 0.5); background-color: rgb(218, 218, 245);">
+                        <div class = "av_image">
+                            <img src = "/static/images/home/feature4.jpg">
+                        </div>
+                        <br> <br> <br>
+                        <h3 style = "background-color: white; border-radius: 10px;"> 🎨 User-Friendly Design </h3>
+                        <div class = "av_info">
+                            <p>
+                                Enjoy a seamless, intuitive interface with a modern and 
+                                visually appealing experience.
+                            </p>
+                        </div>
+                    </div>
+                    <div class = "av_card" style="box-shadow : 0 0 10px rgba(220, 110, 244, 0.5); background-color: antiquewhite;">
+                        <div class = "av_image">
+                            <img src = "/static/images/home/feature5.jpg">
+                        </div>
+                        <br> <br> <br>
+                        <h3 style = "background-color: white; border-radius: 10px;"> ⏳ Timed Challenges </h3>
+                        <div class = "av_info">
+                            <p>
+                                Beat the clock! Take on timed quizzes and push your limits to the max.
+                            </p>
+                        </div>
+                    </div>
+                    <div class = "av_card" style="box-shadow : 0 0 10px rgba(57, 216, 237, 0.5); background-color: rgb(249, 223, 246);">
+                        <div class = "av_image">
+                            <img src = "/static/images/home/feature6.jpg">
+                        </div>
+                        <br> <br> <br>
+                        <h3 style = "background-color: white; border-radius: 10px;"> 🎉 Bonus Quizzes & Surprise Effects </h3>
+                        <div class = "av_info">
+                            <p>
+                                Score high and experience fun animations, 
+                                pop-ups, and celebratory moments!
+                            </p>
+                        </div>
+                    </div>                                              
+                </div>
+                </b>
+            </div>
+        </div> 
+    </section>
+    
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+
+     <!-- contact -->
+    <section>
+    <div class = "contact" id = "Contact">
+        <h2 class = "contact_text"> Contact Us </h2>
+        <div class = "container">
+            <div class = "contact_box">
+                <div class = "left"> 
+                    <h3 style = "color: rgb(102, 2, 160); font-size: 30px; margin-top: 150px; background-color: white; border-radius: 15px;"><b>Phone Numbers:</b></h3> <br>
+                    <p style = "font-size: 20px;">📞 +1 234 567 8900</p> <br>
+                    <p style = "font-size: 20px;"> 📞 +1 987 654 3210</p> <br>
+                    <h3 style = "color: rgb(102, 2, 160); font-size: 30px; background-color: white; border-radius: 15px;"><b>📧 Email Us:</b></h3> <br>
+                    <p><a href="mailto:support@astroiq.com" style = "color: black">support@astroiq.com</a></p>
+                </div>
+                <div class = "right">
+                    <input type = "text" class = "field" placeholder = "Your Name">
+                    <input type = "text" class = "field" placeholder = "Your Email">
+                    <input type = "text" class = "field" placeholder = "Phone">
+                    <textarea class = "field" placeholder = "Message"> </textarea>
+                    <button onclick="showMessage()">Send</button>
+                    <p id="confirmationMessage" style="display: none; color: green; font-weight: bold;">
+                        ✅ Email Sent Successfully!
+                    </p>
+                </div> 
+            </div>
+        </div>
+    </div>
+    </section>
+    
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+
+    <section>
+        <div class="join">
+            <img src="/static/images/home/join.jpg" class="join-image">
+            <div class="join-card">
+                <div class="join_text">
+                    <img src = "/static/images/home/logo.jpg" height = "400px" width = "400px" style="border-radius: 30px;">
+                    <br> <br>
+                    <p><b>Step into the world of <strong style="color: #330250; background-color: white; border-radius: 10px;">  AstroIQ  </strong> and challenge yourself like never before! 🚀✨</b></p>
+                </div>
+                <br> <br>
+                <div class="join_button">
+                    <a href="/login" class="join-button">Join Us</a>
+                </div>
+            </div>
+        </div>   
+    </section>
+
+    <br> <br> <br> <br> <br>
+
+    <!-- footer -->
+     <footer>
+        <div class = "footer_home">
+            <div class = "footer_tag">
+                <h2> Quick Link </h2>
+                <p> <a href = "#Home"> Home </a> </p>
+                <p> <a href = "#About"> About </a> </p>
+                <p> <a href = "#Features"> Features </a> </p>
+                <p> <a href = "#Contact"> Contact </a> </p>
+            </div>
+            <div class = "footer_tag">
+                <h2> Explore </h2>
+                <p> <a href = "/login"> Login Page </a> </p>
+                <p> <a href = "#Features"> Features </a> </p>
+                <p> <a href = "/terms"> Terms and Conditions </a> </p>
+                <p> <a href = "/privacy"> Privacy Policy </a> </p>
+            </div>
+            <div class = "footer_tag">
+                <h2> Contact </h2>
+                <p> +1 234 567 8900</p>
+                <p> +1 987 654 3210</p>
+                <p> abcdesigner@gmail.com </p>
+                <p> abcdesigner@gmail.com </p> 
+            </div>
+            <div class = "footer_tag">
+                <h2> Features </h2>
+                <p> Engaging Quizzes </p>
+                <p> Competitive Leaderboard </p>
+                <p> Point System </p>
+                <p> Bonus Challenges </p>
+            </div>
+            <div class = "footer_tag">        
+                <h2> Social Media </h2>
+                <!-- i class = "fa-brands fa-facebook"> </i-->
+                <!-- this will give f in circle. for just f without circle
+                 use the below code-->
+                <i class = "fa-brands fa-facebook-f"> </i>
+                <i class = "fa-brands fa-twitter"> </i>
+                <i class = "fa-brands fa-instagram"> </i>
+                <i class = "fa-brands fa-linkedin"> </i>
+            </div>
+        </div>
+        <br> 
+        <p class = "end">
+            Designed By <span> <i class = "fa-solid fa-face-grin"> </i> Veenus </span>
+        </p>
+        <br> <br> <br>
+     </footer>
+
+     <script>
+        function showMessage() {
+            document.getElementById("confirmationMessage").style.display = "block";
+        }
+    </script>
+
+</body>
+
+</html>
