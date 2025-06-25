@@ -1,58 +1,55 @@
-🌌 AstroIQ – The Ultimate Interactive Quiz Platform
-AstroIQ is a feature-rich, responsive, and intelligent quiz web application built using the Flask web framework. It’s designed to make knowledge testing engaging, accurate, and visually appealing. Whether you're a student preparing for exams or an educator conducting assessments, AstroIQ offers a dynamic and powerful environment for learning through quizzes.
+🌌 AstroIQ – Interactive Quiz Web App
+AstroIQ is a responsive, feature-rich, and user-friendly quiz application built with Flask.
+It supports multiple quiz attempts, live scoring, leaderboards, and engaging visual effects for better learning and assessment.
 
-🚀 Core Features of AstroIQ
+🚀 Features
+👤 User Experience
+Clean UI using Bootstrap and custom CSS
 
-👤 Rich & Responsive User Experience
+Multiple quiz attempts allowed
 
-✨ Modern UI with Bootstrap – Clean and professional layout using Bootstrap and custom CSS for smooth navigation
+Countdown timer to manage time
 
+Mobile-friendly and fully responsive
 
+🧪 Quiz Functionality
+Supports multiple correct answers (up to 4 options)
 
-🧠 Multiple Quiz Attempts – Users can retake quizzes, and each attempt is recorded for performance tracking.
+All quiz attempts are stored for future review
 
-🕘 Real-Time Countdown Timer – A countdown timer appears during quizzes to simulate a real exam environment and improve time management.
+Bonus quizzes for extra practice and fun
 
-📱 Fully Responsive Design – Optimized for all devices: desktops, tablets, and smartphones.
+🎉 Result Feedback
+Score > 90% → Celebration animation (🎈 Balloons)
 
-🧪 Advanced Quiz Functionality
-✅ Multiple Correct Answers – Supports up to four correct options per question, perfect for multi-select or conceptual questions.
+Score between 50–80% → Motivational message (👍 Good job)
 
-🔁 Comprehensive Attempt History – Every quiz submission is stored separately; no scores are overwritten.
+Score < 50% → Encouragement message with emoji (😓 Work harder)
 
-➕ Bonus Quizzes – Special quizzes outside regular scoring to reward active learners and encourage challenge attempts.
+🏆 Scoring & Leaderboard
++50 points for each quiz attempt
 
-🎉 Smart Result Feedback System
-🎈 Score > 90% – Celebration popup with balloon/animation effect to recognize excellent performance.
+Bonus quiz points are counted separately
 
-👍 Score between 50%–80% – Motivational popup message to encourage consistency.
+Live leaderboard with:
 
-😓 Score < 50% – Supportive message with emoji to push learners to improve.
+Rankings based on total points
 
-🏆 Gamified Scoring System & Leaderboard
-🏅 Point-based System –
+Top users globally and per quiz
 
-+50 points awarded per successful quiz attempt.
+Separated by leagues (e.g., Bronze, Silver, Gold)
 
-Bonus quiz points are added separately to the total score.
+🔧 Admin Dashboard
+View all quiz attempts by a user (none overwritten)
 
-📊 Live Leaderboard –
+Track total quizzes attempted
 
-Displays top users across all quizzes and individually per quiz.
+View average performance per user
 
-Rankings are based on total points (not just quiz scores).
-
-Organized into leagues for a competitive touch (e.g., Bronze, Silver, Gold).
-
-🔧 Powerful Admin Dashboard
-👁️ Detailed Attempt Tracking – Admins can view all quiz attempts per user, including timestamps and scores.
-
-📈 Performance Metrics – Total number of quizzes attempted and average score percentage per user are calculated and displayed.
-
-💡 Quiz Management Panel – Simple interface to manage quizzes, questions, user records, and bonus quiz setups.
+Simple interface to manage users and quizzes
 
 🛠️ Technologies Used
-🧩 Category	⚙️ Tech Stack
+Component	Tech Stack
 Backend	Python, Flask, SQLAlchemy
 Frontend	HTML, CSS, JavaScript, Bootstrap
 Database	SQLite (Upgradeable to PostgreSQL/MySQL)
