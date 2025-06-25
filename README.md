@@ -1,147 +1,60 @@
-Modern Application Development I
-Project Statement
-Quiz Master - V1
-It is a multi-user app (one requires an administrator and other users) that acts as an exam preparation site for multiple courses.
+🌌 AstroIQ – Interactive Quiz Web App
+AstroIQ is a fully responsive and dynamic quiz application built with the Flask web framework. Designed for interactive learning and assessment, AstroIQ supports multiple quiz attempts, real-time scoring, engaging UI, and smart features to elevate the user experience. Whether you're a student or an educator, AstroIQ provides a seamless platform for testing knowledge and tracking performance.
 
-Frameworks to be used
-These are the mandatory frameworks on which the project has to be built.
+🚀 Features
+👤 User Experience
+✨ User-friendly interface built with Bootstrap and custom CSS
+🧠 Multiple quiz attempts allowed – track individual attempt histories
+🕘 Countdown timer per quiz to encourage focus and pace
+📱 Responsive design for mobile and desktop
 
+🧪 Quiz Functionality
+✅ Supports multiple correct answers (up to 4 options)
+🔁 Keeps a full history of quiz attempts for analysis
+➕ Bonus quizzes to boost engagement and learning
+🎉 Smart result pop-ups:
+🎈 >90% – celebration effect
+👍 50–80% – motivational message
+😓 <50% – encouraging message to improve
 
-Flask for application back-end
-Jinja2 templating, HTML, CSS and Bootstraps for application front-end
-SQLite for database (No other database is permitted)
-Note: All demos should be possible on your local machine.
+🏆 Scoring & Leaderboard
+🏅 Point system:
++50 points per quiz attempt
 
-Roles
-The platform will have two roles:
+Bonus quiz points added separately
 
+📊 Live leaderboard:
+Rankings based on total points
+Separated by leagues
+Shows top users globally and per quiz
 
-Admin - root access - It is the superuser of the app and requires no registration
+🔧 Admin Dashboard
+👁️ View all quiz attempts per user (no overwriting of previous scores)
+📈 Displays total quizzes attempted and average performance for users
+💡 Simple interface for managing quizzes and user data
 
-Admin is also known as the quiz master
-There is only one admin to this application
-The administrator login redirects to the quiz master/admin dashboard
-The administrator will manage all the other users
-The administrator will create a new subject
-The administrator will add various chapters under a subject
-The administrator will add quiz questions under a chapter
-
-User - Can attempt any quiz of its choice
-User Registration and Login
-Each user may have:
-id - primary key
-Username (email)
-Password
-Full Name
-Qualification
-DOB
-To be able to choose the subject as well as the chapter name
-Start the quiz
-View the quiz scores
-Terminologies
-
-User: The user will register/login and attempt any quiz of his/her interest.
+🛠️ Technologies Used
+Category	Tech Stack
+Backend	Python, Flask, SQLAlchemy
+Frontend	HTML, CSS, JavaScript, Bootstrap
+Database	SQLite (can be upgraded to PostgreSQL or MySQL)
+Templating	Jinja2
 
 
-Admin: The superuser with full control over other users and data. Registration is not allowed for the admin: The admin account must pre-exist in the database when the application is initialized.
-
-
-Subject: The field of study in which the user wishes to give the quiz. The admin will be creating one or many subjects in the application. Every subject can possibly have the following fields:
-
-
-id - primary key
-Name
-Description
-etc: Additional fields (if any)
-
-Chapter: Each subject can be subdivided into multiple modules called chapters. The possible fields of a chapter can be the following:
-
-id - primary key
-Name
-Description
-etc: Additional fields (if any)
-
-Quiz: A quiz is a test that is used to evaluate the user’s understanding of any particular chapter of any particular subject. A test may contain the following attributes:
-
-
-id - primary key
-chapter_id (foreign key-chapter)
-date_of_quiz
-time_duration(hh:mm)
-remarks (if any)
-etc: Additional fields (if any)
-Questions: Every quiz will have a set of questions created by the admin. Possible fields for a question include:
-
-id - primary key
-quiz_id (foreign key-quiz)
-question_statement
-Option1, option2, … etc.
-etc: Additional fields (if any)
-
-Scores: Stores the scores and details of a user's quiz attempt. Possible fields for scores include:
-
-id - primary key
-quiz_id (foreign key-quiz)
-user_id (foreign key-user)
-time_stamp_of_attempt
-total_scored
-etc: Additional fields (if any)
-Note: The above fields are not exhaustive. Students can add more fields as per their specific requirements.
-
-Application Wireframe
-Quiz Master
-
- 
-
-
-Note:
-The provided wireframe is intended only to illustrate the application's flow and demonstrate what should appear when a user navigates between pages.
-
-Replication of the exact views is NOT mandatory.
-Students are encouraged to work on their own front-end ideas and designs while maintaining the application's intended functionality and flow.
-Core Functionalities
-Admin login and User login
-
-A login/register form with fields like username, password etc. for user and admin login
-You can either use a proper login framework or just use a simple HTML form with username and password (we are not concerned with how secure the login or the app is)
-The app must have a suitable model to store and differentiate all types of users
-Admin Dashboard - for the Admin
-
-The admin should be added, whenever a new database is created
-The admin creates/edits/deletes a subject
-The admin creates/edits/deletes a chapter under the subject
-The admin will create a new quiz under a chapter
-Each quiz contains a set of questions (MCQ - only one option correct)
-The admin can search the users/subjects/quizzes
-Shows the summary charts
-
-Quiz management - for the Admin
-
-Edit/delete a quiz
-The admin specifies the date and duration(HH: MM) of the quiz
-The admin creates/edits/deletes the MCQ (only one option correct) questions inside the specific quiz
-
-User dashboard - for the User
-
-The user can attempt any quiz of his/her interest
-Every quiz has a timer (timer is optional)
-Each quiz score is recorded
-The earlier quiz attempts are shown
-Shows the summary charts
-Note: The database must be created programmatically (via table creation or model code). Manual database creation, such as using DB Browser for SQLite, is NOT allowed.
-
-Recommended Functionalities
-API resources are created to interact with the subjects, chapters and/or quizzes. (Please note: you can choose which API resources to make from the given ones, It is NOT mandatory to create API resources for CRUD of all the components)
-APIs can either be created by returning JSON from a controller or using a flask extension like flask_restful
-External APIs/libraries for creating charts, e.g. Chart JS
-Implementing frontend validation on all the form fields using HTML5 form validation or JavaScript
-Implement backend validation within your app's controllers.
-
-
-Optional Functionalities
-Provide styling and aesthetics to your application by creating a beautiful and responsive front end using simple CSS or Bootstrap
-Incorporate a proper login system to prevent unauthorized access to the app using Flask extensions like flask_login, flask_security etc.
-Any additional feature you feel is appropriate for the application
+![app](https://github.com/user-attachments/assets/7a5a82a4-81a9-4a4d-8ffb-e24b3fde8b74)
+![2](https://github.com/user-attachments/assets/33b512cc-024c-4c6e-bf67-b0180acc3423)
+![3](https://github.com/user-attachments/assets/eed8e138-9ae1-47e8-96f7-cafebc2dfd6a)
+![4](https://github.com/user-attachments/assets/33279c19-c2e9-4f51-9eeb-c174fdda02c1)
+![5](https://github.com/user-attachments/assets/efe67f32-cc55-4954-a4ff-edb4966f643e)
+![6](https://github.com/user-attachments/assets/5daabec5-101c-44e2-bed5-f865c58ad120)
+![7](https://github.com/user-attachments/assets/ddc476bb-9f25-46b2-9e1c-01f2696e2c38)
+![8](https://github.com/user-attachments/assets/1885b53d-8fcc-4a7d-80f1-8fab17a12ebc)
+![9](https://github.com/user-attachments/assets/0578c981-8687-477b-9f29-49dbdbbfb294)
+![10](https://github.com/user-attachments/assets/3d2d8b1e-76fd-47a7-aca1-ce91ea1f69d1)
+![11](https://github.com/user-attachments/assets/3e8182f4-460d-408a-9cd9-4f57a1f1fd56)
+![12](https://github.com/user-attachments/assets/9bb128ae-ea78-4462-8dd2-bb7853850345)
+![13](https://github.com/user-attachments/assets/e7bda705-b144-41ec-86d5-4b8205bbf26e)
+![14](https://github.com/user-attachments/assets/bc02398d-bd5d-4fc0-b4d9-58651187e18f)
 
 
 
@@ -152,8 +65,6 @@ Any additional feature you feel is appropriate for the application
 
 
 
-
-![app](https://github.com/user-attachments/assets/9e607063-4cf8-412b-b190-3e379c5fc5ba)
 
 
 
