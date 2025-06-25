@@ -75,111 +75,136 @@ Templating	Jinja2
 
 
 
-🌌 AstroIQ – Interactive Quiz Web App
-AstroIQ is a responsive, feature-rich, and user-friendly quiz application built with Flask.
-It supports multiple quiz attempts, live scoring, leaderboards, and engaging visual effects for better learning and assessment.
 
-🚀 Features
-👤 User Experience
+
+
+# 🌌 AstroIQ – Interactive Quiz Web App
+
+**AstroIQ** is a responsive, feature-rich, and user-friendly quiz application built with **Flask**.  
+It supports **multiple quiz attempts**, **live scoring**, **leaderboards**, and **engaging visual effects** for better learning and assessment.
+
+---
+
+## 🚀 Features
+
+---
+
+### 👤 User Experience
+
 AstroIQ offers a modern and intuitive interface, allowing users to easily navigate, take quizzes, and track their progress.
 
-✅ Clean UI using Bootstrap and custom CSS
+- ✅ Clean UI using Bootstrap and custom CSS  
+- 🔁 Multiple quiz attempts allowed  
+- ⏲️ Countdown timer for each quiz  
+- 📱 Fully responsive and mobile-friendly design  
 
-🔁 Multiple quiz attempts allowed
+**Screenshots:**
 
-⏲️ Countdown timer for each quiz
+| Home Page | User Dashboard |
+|-----------|----------------|
+| ![app](https://github.com/user-attachments/assets/7a5a82a4-81a9-4a4d-8ffb-e24b3fde8b74) | ![2](https://github.com/user-attachments/assets/33b512cc-024c-4c6e-bf67-b0180acc3423) |
 
-📱 Fully responsive and mobile-friendly design
+---
 
-Screenshots:
+### 🧪 Quiz Functionality
 
-Home Page	User Dashboard
-	
-
-🧪 Quiz Functionality
 AstroIQ supports complex quizzes and keeps track of every attempt.
 
-✅ Supports multiple correct answers (up to 4)
+- ✅ Supports **multiple correct answers** (up to 4)  
+- 📊 Stores all quiz attempts separately  
+- 🎯 Bonus quizzes to reward regular engagement  
 
-📊 Stores all quiz attempts separately
+**Screenshots:**
 
-🎯 Bonus quizzes to reward regular engagement
+| Attempt Quiz | Quiz Panel | Attempt Status |
+|--------------|------------|----------------|
+| ![3](https://github.com/user-attachments/assets/eed8e138-9ae1-47e8-96f7-cafebc2dfd6a) | ![4](https://github.com/user-attachments/assets/33279c19-c2e9-4f51-9eeb-c174fdda02c1) | ![5](https://github.com/user-attachments/assets/efe67f32-cc55-4954-a4ff-edb4966f643e) |
 
-Screenshots:
+---
 
-Attempt Quiz	Quiz Panel	Attempt Status
-		
+### 🎉 Result Feedback System
 
-🎉 Result Feedback System
 AstroIQ provides immediate and engaging result feedback based on user performance:
 
-🎈 Score > 90% → Celebration animation
+- 🎈 Score > 90% → Celebration animation  
+- 👍 Score between 50–80% → Motivational message  
+- 😓 Score < 50% → Encouraging message  
 
-👍 Score between 50–80% → Motivational message
+**Screenshots:**
 
-😓 Score < 50% → Encouraging message
+| Score Feedback – Excellent | Score Feedback – Good | Score Feedback – Needs Improvement |
+|----------------------------|------------------------|-------------------------------------|
+| ![6](https://github.com/user-attachments/assets/5daabec5-101c-44e2-bed5-f865c58ad120) | ![7](https://github.com/user-attachments/assets/ddc476bb-9f25-46b2-9e1c-01f2696e2c38) | ![8](https://github.com/user-attachments/assets/1885b53d-8fcc-4a7d-80f1-8fab17a12ebc) |
 
-Screenshots:
+---
 
-Score Feedback – Excellent	Score Feedback – Good	Score Feedback – Needs Improvement
-		
+### 🏆 Scoring & Leaderboard
 
-🏆 Scoring & Leaderboard
 AstroIQ uses a gamified scoring system to motivate users.
 
-🏅 +50 points for each quiz attempt
+- 🏅 +50 points for each quiz attempt  
+- ➕ Bonus quiz points counted separately  
+- 🏆 Live leaderboard shows:
+  - Rankings based on **total points**
+  - **Top users** globally and per quiz
+  - Sorted into **leagues** (e.g., Bronze, Silver, Gold)
 
-➕ Bonus quiz points counted separately
+**Screenshots:**
 
-🏆 Live leaderboard shows:
+| Leaderboard View | League Breakdown |
+|------------------|------------------|
+| ![9](https://github.com/user-attachments/assets/0578c981-8687-477b-9f29-49dbdbbfb294) | ![10](https://github.com/user-attachments/assets/3d2d8b1e-76fd-47a7-aca1-ce91ea1f69d1) |
 
-Rankings based on total points
+---
 
-Top users globally and per quiz
+### 🔧 Admin Dashboard
 
-Sorted into leagues (e.g., Bronze, Silver, Gold)
-
-Screenshots:
-
-Leaderboard View	League Breakdown
-	
-
-🔧 Admin Dashboard
 Admins have powerful tools to monitor and manage the platform:
 
-👁️ View all quiz attempts per user
+- 👁️ View all quiz attempts per user  
+- 📈 Track total quizzes attempted  
+- 📊 See average performance of each user  
+- 🛠️ Manage quizzes, users, and bonus questions easily
 
-📈 Track total quizzes attempted
+**Screenshots:**
 
-📊 See average performance of each user
+| Admin Panel – Attempt History | Admin Panel – Stats View |
+|-------------------------------|---------------------------|
+| ![11](https://github.com/user-attachments/assets/3e8182f4-460d-408a-9cd9-4f57a1f1fd56) | ![12](https://github.com/user-attachments/assets/9bb128ae-ea78-4462-8dd2-bb7853850345) |
 
-🛠️ Manage quizzes, users, and bonus questions easily
+---
 
-Screenshots:
+### 🎯 Bonus Features
 
-Admin Panel – Attempt History	Admin Panel – Stats View
-	
+- ⚡ Instant popups and animations after quiz submission  
+- 🔄 Tracks user progress across regular and bonus quizzes  
+- 🎨 Interactive quiz panel with visited/attempted status
 
-🎯 Bonus Features
-⚡ Instant popups and animations after quiz submission
+**Screenshots:**
 
-🔄 Tracks user progress across regular and bonus quizzes
+| Bonus Quiz Popup | Attempt Review |
+|------------------|----------------|
+| ![13](https://github.com/user-attachments/assets/e7bda705-b144-41ec-86d5-4b8205bbf26e) | ![14](https://github.com/user-attachments/assets/bc02398d-bd5d-4fc0-b4d9-58651187e18f) |
 
-🎨 Interactive quiz panel with visited/attempted status
+---
 
-Screenshots:
+## 🛠️ Technologies Used
 
-Bonus Quiz Popup	Attempt Review
-	
+| **Component** | **Tech Stack**                          |
+|---------------|------------------------------------------|
+| Backend       | Python, Flask, SQLAlchemy                |
+| Frontend      | HTML, CSS, JavaScript, Bootstrap         |
+| Database      | SQLite (Upgradeable to PostgreSQL/MySQL) |
+| Templating    | Jinja2                                   |
 
-🛠️ Technologies Used
-Component	Tech Stack
-Backend	Python, Flask, SQLAlchemy
-Frontend	HTML, CSS, JavaScript, Bootstrap
-Database	SQLite (Upgradeable to PostgreSQL/MySQL)
-Templating	Jinja2
+---
 
+## 📌 Ideal Use Cases
 
+- Educational platforms  
+- Competitive quizzes  
+- Online tests  
+- Self-assessment tools
 
 
 
