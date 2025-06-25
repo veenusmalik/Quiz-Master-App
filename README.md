@@ -2,43 +2,74 @@
 AstroIQ is a fully responsive and dynamic quiz application built with the Flask web framework. Designed for interactive learning and assessment, AstroIQ supports multiple quiz attempts, real-time scoring, engaging UI, and smart features to elevate the user experience. Whether you're a student or an educator, AstroIQ provides a seamless platform for testing knowledge and tracking performance.
 
 🚀 Features
+
 👤 User Experience
+
 ✨ User-friendly interface built with Bootstrap and custom CSS
+
 🧠 Multiple quiz attempts allowed – track individual attempt histories
+
 🕘 Countdown timer per quiz to encourage focus and pace
+
 📱 Responsive design for mobile and desktop
 
+
 🧪 Quiz Functionality
+
 ✅ Supports multiple correct answers (up to 4 options)
+
 🔁 Keeps a full history of quiz attempts for analysis
+
 ➕ Bonus quizzes to boost engagement and learning
+
+
 🎉 Smart result pop-ups:
+
 🎈 >90% – celebration effect
+
 👍 50–80% – motivational message
-😓 <50% – encouraging message to improve
+
 
 🏆 Scoring & Leaderboard
+
 🏅 Point system:
+
 +50 points per quiz attempt
+
 
 Bonus quiz points added separately
 
+
 📊 Live leaderboard:
+
 Rankings based on total points
+
 Separated by leagues
+
 Shows top users globally and per quiz
 
+
 🔧 Admin Dashboard
+
 👁️ View all quiz attempts per user (no overwriting of previous scores)
+
 📈 Displays total quizzes attempted and average performance for users
+
 💡 Simple interface for managing quizzes and user data
 
+
 🛠️ Technologies Used
+
 Category	Tech Stack
+
 Backend	Python, Flask, SQLAlchemy
+
 Frontend	HTML, CSS, JavaScript, Bootstrap
+
 Database	SQLite (can be upgraded to PostgreSQL or MySQL)
+
 Templating	Jinja2
+
 
 
 ![app](https://github.com/user-attachments/assets/7a5a82a4-81a9-4a4d-8ffb-e24b3fde8b74)
