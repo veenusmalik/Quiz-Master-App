@@ -75,6 +75,112 @@ Templating	Jinja2
 
 
 
+🌌 AstroIQ – Interactive Quiz Web App
+AstroIQ is a responsive, feature-rich, and user-friendly quiz application built with Flask.
+It supports multiple quiz attempts, live scoring, leaderboards, and engaging visual effects for better learning and assessment.
+
+🚀 Features
+👤 User Experience
+AstroIQ offers a modern and intuitive interface, allowing users to easily navigate, take quizzes, and track their progress.
+
+✅ Clean UI using Bootstrap and custom CSS
+
+🔁 Multiple quiz attempts allowed
+
+⏲️ Countdown timer for each quiz
+
+📱 Fully responsive and mobile-friendly design
+
+Screenshots:
+
+Home Page	User Dashboard
+	
+
+🧪 Quiz Functionality
+AstroIQ supports complex quizzes and keeps track of every attempt.
+
+✅ Supports multiple correct answers (up to 4)
+
+📊 Stores all quiz attempts separately
+
+🎯 Bonus quizzes to reward regular engagement
+
+Screenshots:
+
+Attempt Quiz	Quiz Panel	Attempt Status
+		
+
+🎉 Result Feedback System
+AstroIQ provides immediate and engaging result feedback based on user performance:
+
+🎈 Score > 90% → Celebration animation
+
+👍 Score between 50–80% → Motivational message
+
+😓 Score < 50% → Encouraging message
+
+Screenshots:
+
+Score Feedback – Excellent	Score Feedback – Good	Score Feedback – Needs Improvement
+		
+
+🏆 Scoring & Leaderboard
+AstroIQ uses a gamified scoring system to motivate users.
+
+🏅 +50 points for each quiz attempt
+
+➕ Bonus quiz points counted separately
+
+🏆 Live leaderboard shows:
+
+Rankings based on total points
+
+Top users globally and per quiz
+
+Sorted into leagues (e.g., Bronze, Silver, Gold)
+
+Screenshots:
+
+Leaderboard View	League Breakdown
+	
+
+🔧 Admin Dashboard
+Admins have powerful tools to monitor and manage the platform:
+
+👁️ View all quiz attempts per user
+
+📈 Track total quizzes attempted
+
+📊 See average performance of each user
+
+🛠️ Manage quizzes, users, and bonus questions easily
+
+Screenshots:
+
+Admin Panel – Attempt History	Admin Panel – Stats View
+	
+
+🎯 Bonus Features
+⚡ Instant popups and animations after quiz submission
+
+🔄 Tracks user progress across regular and bonus quizzes
+
+🎨 Interactive quiz panel with visited/attempted status
+
+Screenshots:
+
+Bonus Quiz Popup	Attempt Review
+	
+
+🛠️ Technologies Used
+Component	Tech Stack
+Backend	Python, Flask, SQLAlchemy
+Frontend	HTML, CSS, JavaScript, Bootstrap
+Database	SQLite (Upgradeable to PostgreSQL/MySQL)
+Templating	Jinja2
+
+
+
 
 
 
