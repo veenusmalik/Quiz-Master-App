@@ -2,8 +2,12 @@
 AstroIQ is a feature-rich, responsive, and intelligent quiz web application built using the Flask web framework. It’s designed to make knowledge testing engaging, accurate, and visually appealing. Whether you're a student preparing for exams or an educator conducting assessments, AstroIQ offers a dynamic and powerful environment for learning through quizzes.
 
 🚀 Core Features of AstroIQ
+
 👤 Rich & Responsive User Experience
-✨ Modern UI with Bootstrap – Clean and professional layout using Bootstrap and custom CSS for smooth navigation.
+
+✨ Modern UI with Bootstrap – Clean and professional layout using Bootstrap and custom CSS for smooth navigation
+
+
 
 🧠 Multiple Quiz Attempts – Users can retake quizzes, and each attempt is recorded for performance tracking.
 
