@@ -1,74 +1,59 @@
-🌌 AstroIQ – Interactive Quiz Web App
-AstroIQ is a fully responsive and dynamic quiz application built with the Flask web framework. Designed for interactive learning and assessment, AstroIQ supports multiple quiz attempts, real-time scoring, engaging UI, and smart features to elevate the user experience. Whether you're a student or an educator, AstroIQ provides a seamless platform for testing knowledge and tracking performance.
+🌌 AstroIQ – The Ultimate Interactive Quiz Platform
+AstroIQ is a feature-rich, responsive, and intelligent quiz web application built using the Flask web framework. It’s designed to make knowledge testing engaging, accurate, and visually appealing. Whether you're a student preparing for exams or an educator conducting assessments, AstroIQ offers a dynamic and powerful environment for learning through quizzes.
 
-🚀 Features
+🚀 Core Features of AstroIQ
+👤 Rich & Responsive User Experience
+✨ Modern UI with Bootstrap – Clean and professional layout using Bootstrap and custom CSS for smooth navigation.
 
-👤 User Experience
+🧠 Multiple Quiz Attempts – Users can retake quizzes, and each attempt is recorded for performance tracking.
 
-✨ User-friendly interface built with Bootstrap and custom CSS
+🕘 Real-Time Countdown Timer – A countdown timer appears during quizzes to simulate a real exam environment and improve time management.
 
-🧠 Multiple quiz attempts allowed – track individual attempt histories
+📱 Fully Responsive Design – Optimized for all devices: desktops, tablets, and smartphones.
 
-🕘 Countdown timer per quiz to encourage focus and pace
+🧪 Advanced Quiz Functionality
+✅ Multiple Correct Answers – Supports up to four correct options per question, perfect for multi-select or conceptual questions.
 
-📱 Responsive design for mobile and desktop
+🔁 Comprehensive Attempt History – Every quiz submission is stored separately; no scores are overwritten.
 
+➕ Bonus Quizzes – Special quizzes outside regular scoring to reward active learners and encourage challenge attempts.
 
-🧪 Quiz Functionality
+🎉 Smart Result Feedback System
+🎈 Score > 90% – Celebration popup with balloon/animation effect to recognize excellent performance.
 
-✅ Supports multiple correct answers (up to 4 options)
+👍 Score between 50%–80% – Motivational popup message to encourage consistency.
 
-🔁 Keeps a full history of quiz attempts for analysis
+😓 Score < 50% – Supportive message with emoji to push learners to improve.
 
-➕ Bonus quizzes to boost engagement and learning
+🏆 Gamified Scoring System & Leaderboard
+🏅 Point-based System –
 
++50 points awarded per successful quiz attempt.
 
-🎉 Smart result pop-ups:
+Bonus quiz points are added separately to the total score.
 
-🎈 >90% – celebration effect
+📊 Live Leaderboard –
 
-👍 50–80% – motivational message
+Displays top users across all quizzes and individually per quiz.
 
+Rankings are based on total points (not just quiz scores).
 
-🏆 Scoring & Leaderboard
+Organized into leagues for a competitive touch (e.g., Bronze, Silver, Gold).
 
-🏅 Point system:
+🔧 Powerful Admin Dashboard
+👁️ Detailed Attempt Tracking – Admins can view all quiz attempts per user, including timestamps and scores.
 
-+50 points per quiz attempt
+📈 Performance Metrics – Total number of quizzes attempted and average score percentage per user are calculated and displayed.
 
-
-Bonus quiz points added separately
-
-
-📊 Live leaderboard:
-
-Rankings based on total points
-
-Separated by leagues
-
-Shows top users globally and per quiz
-
-
-🔧 Admin Dashboard
-
-👁️ View all quiz attempts per user (no overwriting of previous scores)
-
-📈 Displays total quizzes attempted and average performance for users
-
-💡 Simple interface for managing quizzes and user data
-
+💡 Quiz Management Panel – Simple interface to manage quizzes, questions, user records, and bonus quiz setups.
 
 🛠️ Technologies Used
-
-Category	Tech Stack
-
+🧩 Category	⚙️ Tech Stack
 Backend	Python, Flask, SQLAlchemy
-
 Frontend	HTML, CSS, JavaScript, Bootstrap
-
-Database	SQLite (can be upgraded to PostgreSQL or MySQL)
-
+Database	SQLite (Upgradeable to PostgreSQL/MySQL)
 Templating	Jinja2
+
 
 
 
