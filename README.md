@@ -137,7 +137,23 @@ External APIs/libraries for creating charts, e.g. Chart JS
 Implementing frontend validation on all the form fields using HTML5 form validation or JavaScript
 Implement backend validation within your app's controllers.
 
+
 Optional Functionalities
 Provide styling and aesthetics to your application by creating a beautiful and responsive front end using simple CSS or Bootstrap
 Incorporate a proper login system to prevent unauthorized access to the app using Flask extensions like flask_login, flask_security etc.
 Any additional feature you feel is appropriate for the application
+
+
+
+
+
+
+
+
+
+
+
+![app](https://github.com/user-attachments/assets/9e607063-4cf8-412b-b190-3e379c5fc5ba)
+
+
+
